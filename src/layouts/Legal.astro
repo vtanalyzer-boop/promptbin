@@ -1,0 +1,13 @@
+---
+import Base from './Base.astro';
+import PageHead from '../components/PageHead.astro';
+import { SITE } from '../data/site.js';
+const { title, description, crumb, seoTitle } = Astro.props;
+---
+<Base title={seoTitle || `${title} | ${SITE.name}`} description={description}>
+  <PageHead tone="mono" title={title} sub={`Last updated: ${SITE.updated}`} crumbs={[[null, crumb ?? title]]} />
+  <div class="wrap"><article class="prose">
+    <div class="note">Template text provided for convenience. Have a qualified lawyer review it for your business and jurisdiction before launch.</div>
+    <slot />
+  </article></div>
+</Base>

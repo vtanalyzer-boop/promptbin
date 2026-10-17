@@ -1,0 +1,21 @@
+---
+import FilmStrip from './FilmStrip.astro';
+const { title, sub, crumbs = [], tone = 'pink' } = Astro.props;
+const crumbList = crumbs.length ? {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [{ name: 'Home', href: '/' }, ...crumbs.map(([h, l]) => ({ name: l, href: h || Astro.url.pathname }))]
+    .map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: new URL(c.href, Astro.site).href })),
+} : null;
+---
+{crumbList && <script type="application/ld+json" set:html={JSON.stringify(crumbList).replace(/</g, '\\u003c')} />}
+<section class="hero2" data-tone={tone}>
+  <FilmStrip />
+  <div class="wrap">
+    {crumbs.length > 0 && (
+      <p class="crumb"><a href="/">Home</a>{crumbs.map(([h, l]) => <Fragment> / {h ? <a href={h}>{l}</a> : l}</Fragment>)}</p>
+    )}
+    <h1>{title}</h1>
+    {sub && <p class="sub">{sub}</p>}
+    <slot />
+  </div>
+</section>

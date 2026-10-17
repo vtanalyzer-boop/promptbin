@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "promptbin",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "promptbin-db",
+      // Replace with the id printed by: npx wrangler d1 create promptbin-db
+      "database_id": "REPLACE_WITH_YOUR_D1_DATABASE_ID",
+      "migrations_dir": "migrations"
+    }
+  ]
+  // Secrets (not stored here): ADMIN_PASSWORD, SESSION_SECRET
+  //   npx wrangler secret put ADMIN_PASSWORD
+  //   npx wrangler secret put SESSION_SECRET
+  // Custom domain: add promptbin.in under Workers & Pages > promptbin > Settings > Domains & Routes.
+}

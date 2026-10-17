@@ -1,0 +1,6 @@
+---
+// Purely decorative drifting film strips: 2 rows x 40 frames of CSS gradients (no images, ~0 KB).
+const frames = Array.from({ length: 40 });
+---
+<div class="fs a" aria-hidden="true">{frames.map(() => <i />)}</div>
+<div class="fs b" aria-hidden="true">{frames.map(() => <i />)}</div>

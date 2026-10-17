@@ -1,0 +1,61 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import FaqList from '../../components/FaqList.astro';
+import { BLOG_FAQ } from '../../data/extra-faq.js';
+import KeyPoints from '../../components/KeyPoints.astro';
+import { KEY_POINTS } from '../../data/extra-faq.js';
+import Answer from '../../components/Answer.astro';
+import PageHead from '../../components/PageHead.astro';
+import { SITE } from '../../data/site.js';
+const schema = [{ '@context': 'https://schema.org', '@type': 'Blog', name: 'promptbin blog', url: new URL('/blog/', Astro.site).href, publisher: { '@type': 'Organization', name: 'promptbin' } }];
+const posts = (await getCollection('blog')).sort((a, b) => +b.data.pubDate - +a.data.pubDate);
+---
+<Base schema={schema} title="ChatGPT Photo Editing Guides & Prompt Ideas | promptbin Blog"
+  description="Step-by-step guides on ChatGPT AI photo editing prompts: Instagram trends, couple photos, text edits and how to rebuild a prompt seen ChatGPT creators share.">
+  <PageHead tone="sky" title="Blog" sub="Guides and prompt ideas for ChatGPT photo editing, from beginner steps to Instagram trends." crumbs={[[null, 'Blog']]} />
+  <section class="sec"><div class="wrap"><Answer text="The promptbin blog is a library of step-by-step guides on ChatGPT AI photo editing prompts: how to write them, how to find a prompt seen ChatGPT creators share, and how to use trending, couple and text prompts." /><p class="intro">Eight in-depth guides on ChatGPT AI photo editing prompts. Learn the formula behind every ChatGPT prompt for photo editing, find a prompt seen ChatGPT creators shared, see how ChatGPT photo editing prompts trending Instagram creators reuse are built, and copy a couple prompt ChatGPT can follow or ChatGPT photo editing prompts text templates.</p><p class="intro">Each guide links to ready-made ChatGPT photo editing prompts you can copy and test.</p><div class="posts">
+    {posts.map((p) => (
+      <article class="post">
+        <time class="meta" datetime={p.data.pubDate.toISOString()}>{p.data.pubDate.toISOString().slice(0, 10)}</time>
+        <h2 style="font-size:1.25rem"><a href={`/blog/${p.id}/`} style="color:inherit;text-decoration:none">{p.data.title}</a></h2>
+        <p>{p.data.description}</p>
+        <a href={`/blog/${p.id}/`}>Read guide</a>
+      </article>
+    ))}
+  </div>
+  <h2 style="margin-top:2.4rem">Find the right ChatGPT photo editing prompts guide</h2>
+  <p class="intro">Not sure where to start? Match your goal to a guide. New to ChatGPT AI photo editing prompts? Begin with the beginner guide and the step-by-step guide. Want the structure behind every ChatGPT prompt for photo editing? Read the six-part formula. Looking for ChatGPT photo editing prompts trending Instagram creators use? Open the trending guide, then the web stories.</p>
+  <p class="intro">Need a couple prompt ChatGPT can follow for two faces? The couple guide covers five rules and many scenes. Adding words to a picture? ChatGPT photo editing prompts text works best with short phrases, and the text guide shows how. Found a prompt seen ChatGPT creators posted but cannot remember all of it? The rebuild guide shows how to find it and fix it with the prompt tool.</p>
+  </div></section>
+  <section class="sec">
+    <div class="wrap longform">
+      <h2>A suggested reading order</h2>
+      <p>The guides stand alone, but they also build on each other. If you are new, read them in roughly this order and you will find each one easier than the last.</p>
+      <ol>
+        <li><a href="/blog/chatgpt-ai-photo-editing-prompts-for-beginners/">ChatGPT AI photo editing prompts for beginners</a> explains the basic idea and walks through a first edit.</li>
+        <li><a href="/blog/how-to-use-chatgpt-photo-editing-prompts/">How to use ChatGPT photo editing prompts</a> covers the copy, paste and refine routine, plus what to do when ChatGPT changes a face.</li>
+        <li><a href="/blog/chatgpt-prompt-for-photo-editing-formula/">The six-part formula</a> shows how to write your own ChatGPT prompt for photo editing instead of relying on someone else's.</li>
+        <li><a href="/blog/trending-instagram-chatgpt-photo-editing-prompts/">Trending Instagram looks</a> takes the formula and applies it to the styles people are posting right now.</li>
+        <li><a href="/blog/chatgpt-couple-photo-prompts/">Couple prompts</a> and <a href="/blog/chatgpt-photo-editing-prompts-text/">text prompts</a> deal with the two hardest cases: two faces, and words on a photo.</li>
+        <li><a href="/blog/prompt-seen-chatgpt-how-to-find-and-rebuild-it/">Prompt seen ChatGPT</a> helps when you remember a result but not the instructions behind it.</li>
+        <li><a href="/blog/chatgpt-photo-editing-prompts-web-stories/">Web stories</a> explains how to use our swipeable summaries.</li>
+      </ol>
+
+      <h2>What you will not find here</h2>
+      <p>We do not publish guides that promise a perfect result every time, because no prompt can. We do not write about imitating living artists or protected characters, and we do not publish prompts meant to deceive people, such as fake documents or misleading edits of real individuals. When a topic is risky, we say so and explain the safer version.</p>
+      <p>We also try not to pad. A guide is finished when it answers the question in its title. If a post feels shorter than you expected, that is on purpose.</p>
+
+      <h2>How a guide gets written</h2>
+      <p>Every guide starts with a real question about ChatGPT's image editing. We write a plain draft, add example prompts, and then check each example against its own advice. A prompt in a guide should follow the rules the guide teaches. If it does not, we fix the prompt or the rule.</p>
+      <p>After that comes a read-through for clarity. Can a first-time reader follow it without opening another tab? Is every term explained the first time it appears? Are the links useful rather than decorative? Guides that fail those questions go back for another pass. We add the date to each post so you can judge how current it is, and we update posts when ChatGPT's behavior changes in a way that affects the advice.</p>
+
+      <h2>Using the guides with the rest of promptbin</h2>
+      <p>Each guide links to ready-made prompts in the <a href="/">library</a>, so you can read an idea and test it in the same session. If you want to experiment with your own wording, open the free <a href="/ai-photo-prompt-tool/">prompt tool</a>. It runs in your browser, so nothing you type is uploaded. And if you would rather skim than read, the <a href="/web-stories/">web stories</a> condense the main guides into a few slides each.</p>
+      <p>Have a question the guides do not answer? Check the <a href="/faq/">FAQ</a> first, then write to <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. Good questions often become the next guide.</p>
+    </div>
+  </section>
+
+  <KeyPoints title="Key points: ChatGPT AI photo editing prompts guides" items={KEY_POINTS.blog} />
+  <FaqList title="ChatGPT AI photo editing prompts guides: common questions" items={BLOG_FAQ} />
+</Base>

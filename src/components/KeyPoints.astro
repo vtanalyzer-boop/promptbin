@@ -1,0 +1,9 @@
+---
+const { title, items = [] } = Astro.props;
+---
+<section class="sec">
+  <div class="wrap" style="max-width:860px">
+    <h2>{title}</h2>
+    <ul class="kp">{items.map((t) => <li>{t}</li>)}</ul>
+  </div>
+</section>

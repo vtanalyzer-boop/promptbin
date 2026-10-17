@@ -1,0 +1,25 @@
+---
+export const prerender = false;
+import Admin from '../../layouts/Admin.astro';
+import { adminEnabled, isAuthed } from '../../lib/auth.js';
+if (await isAuthed(Astro.request)) return Astro.redirect('/admin/');
+const e = Astro.url.searchParams.get('e');
+const errors = {
+  bad: 'Wrong password. Try again.',
+  wait: 'Too many attempts. Please wait 15 minutes.',
+  origin: 'Login must be sent from this site.',
+  setup: 'Admin is not set up yet. Set ADMIN_PASSWORD (at least 12 characters) as a secret and redeploy.',
+};
+const enabled = adminEnabled();
+---
+<Admin title="Log in" authed={false}>
+  <div class="login">
+    <h1>promptbin Console</h1>
+    {(e && errors[e]) && <p class="msg err" style="display:block;margin-bottom:1rem">{errors[e]}</p>}
+    {!enabled && !e && <p class="msg err" style="display:block;margin-bottom:1rem">{errors.setup}</p>}
+    <form method="post" action="/api/admin/login/">
+      <div><label for="pw">Admin password</label><input id="pw" name="password" type="password" autocomplete="current-password" required autofocus /></div>
+      <button class="btn" type="submit">Log in</button>
+    </form>
+  </div>
+</Admin>

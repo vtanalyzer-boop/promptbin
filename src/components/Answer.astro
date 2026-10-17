@@ -1,0 +1,5 @@
+---
+// Direct-answer block: a short, self-contained definition placed right under the page heading.
+const { text, label = 'Quick answer' } = Astro.props;
+---
+<div class="answer" role="note"><p><strong>{label}:</strong> {text}</p></div>

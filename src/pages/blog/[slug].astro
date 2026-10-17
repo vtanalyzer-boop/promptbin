@@ -1,0 +1,32 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import FaqList from '../../components/FaqList.astro';
+import { POST_FAQ } from '../../data/extra-faq.js';
+import Answer from '../../components/Answer.astro';
+import { SITE } from '../../data/site.js';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+const { post } = Astro.props;
+const { Content } = await render(post);
+const d = post.data;
+const url = new URL(Astro.url.pathname, Astro.site).href;
+const schema = [{
+  '@context': 'https://schema.org', '@type': 'BlogPosting', headline: d.title, description: d.description,
+  datePublished: d.pubDate.toISOString(), dateModified: (d.updatedDate ?? d.pubDate).toISOString(),
+  author: { '@type': 'Organization', name: SITE.name }, publisher: { '@type': 'Organization', name: SITE.name },
+  mainEntityOfPage: url, image: new URL('/og-default.png', Astro.site).href,
+}];
+---
+<Base title={d.seoTitle || `${d.title} | ${SITE.name}`} description={d.metaDescription || d.description} ogType="article" schema={schema}>
+  <PageHead title={d.title} sub={d.description} crumbs={[['/blog/', 'Blog'], [null, 'Guide']]} tone={['pink','teal','sand','dusk','sky','mono'][post.data.pubDate.getDate() % 6]} />
+  <div class="wrap"><article class="prose">
+    {d.answer && <Answer text={d.answer} label="Quick answer" />}
+    <Content />
+  </article></div>
+  <FaqList title="Related questions about ChatGPT AI photo editing prompts" items={POST_FAQ[post.id] || []} />
+</Base>

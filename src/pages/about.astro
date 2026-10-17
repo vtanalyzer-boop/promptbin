@@ -1,0 +1,84 @@
+---
+import Base from '../layouts/Base.astro';
+import FaqList from '../components/FaqList.astro';
+import { ABOUT_FAQ } from '../data/extra-faq.js';
+import KeyPoints from '../components/KeyPoints.astro';
+import { KEY_POINTS } from '../data/extra-faq.js';
+import Answer from '../components/Answer.astro';
+import PageHead from '../components/PageHead.astro';
+import { SITE } from '../data/site.js';
+---
+<Base title="About promptbin | ChatGPT Photo Prompt Library" description="promptbin is a free library of ChatGPT AI photo editing prompts, managed by Kamlesh Mohabe. Copy-ready prompts, a prompt tool, web stories and guides." schema={[{ '@context': 'https://schema.org', '@type': 'AboutPage', name: 'About promptbin', url: new URL('/about/', Astro.site).href, mainEntity: { '@type': 'Organization', name: SITE.name, url: SITE.url, email: SITE.email, founder: { '@type': 'Person', name: SITE.manager.name, jobTitle: SITE.manager.role } } }]}>
+  <PageHead tone="sand" title="About promptbin" sub="A small, fast library of photo editing prompts for ChatGPT, built for people who want good results without trial and error." crumbs={[[null, 'About']]} />
+  <div class="wrap"><article class="prose">
+    <Answer text="promptbin is a free library of ChatGPT AI photo editing prompts, managed by Kamlesh Mohabe. It publishes copy-ready prompts, a prompt tool, web stories and guides for portraits, couples, text on photos and Instagram trends." />
+    <p>{SITE.name} exists to make photo editing with ChatGPT simpler. Instead of searching through comments and screenshots for a prompt you saw, you can find it here, copy it with one tap and paste it into ChatGPT with your photo. Our focus is ChatGPT AI photo editing prompts that are clear, safe for faces and easy to adapt.</p>
+    <h2>Platform manager</h2>
+    <div class="mgr">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#161a23"/><circle cx="16" cy="12" r="5" fill="#d6285f"/><path d="M6 27c1-6 5-9 10-9s9 3 10 9z" fill="#d6285f"/></svg>
+      <div><b>{SITE.manager.name}</b><span>{SITE.manager.label} &middot; {SITE.manager.role}</span><br /><a href={`mailto:${SITE.email}`}>{SITE.email}</a></div>
+    </div>
+    <p>{SITE.manager.name} manages the {SITE.name} platform, from the prompt library and the admin console to our Web Stories and the Cloudflare-hosted database behind them. Every ChatGPT AI photo editing prompts set we publish goes through the quality checklist below.</p>
+    <h2>What we publish</h2>
+    <ul>
+      <li>Copy-ready ChatGPT photo editing prompts for portraits, backgrounds, retro film and art styles.</li>
+      <li>ChatGPT photo editing prompts trending Instagram creators reuse, rewritten so they are clean and complete.</li>
+      <li>Every couple prompt ChatGPT users ask for, tested for two-face consistency.</li>
+      <li>ChatGPT photo editing prompts text templates for headlines, quotes and names.</li>
+      <li>Swipeable <a href="/web-stories/">ChatGPT photo editing prompts web stories</a> that show a set of prompts in under a minute.</li>
+      <li>A free Prompt Tool to generate, modify, edit and correct prompts, plus guides on getting realistic results.</li>
+    </ul>
+    <h2>How we write and check prompts</h2>
+    <p>Each ChatGPT prompt for photo editing on this site names the change, the style and the crop, and ends with what must stay the same. We read every prompt for clarity, remove filler words and check that it protects faces. We also avoid prompts that imitate a living artist or a protected character.</p>
+    <p>Results from AI image tools vary by photo, plan and model version, so we describe prompts as starting points, not guarantees.</p>
+    <h2>Why we built the Prompt Tool for ChatGPT AI photo editing prompts</h2>
+    <p>People kept asking the same thing: "I saw a prompt seen ChatGPT users shared, but I only remember half of it." The corrector, modifier, generator and editor exist to solve that. They run in your browser, do not need an account and never upload your text.</p>
+    <h2>Our quality checklist</h2>
+    <p>Before any of our ChatGPT photo editing prompts goes live, it has to pass four questions.</p>
+    <ol>
+      <li>Is the instruction specific about light, style and crop?</li>
+      <li>Does it protect faces, outfits and poses?</li>
+      <li>Does it avoid misleading or harmful uses?</li>
+      <li>Is it short enough to read in one pass?</li>
+    </ol>
+    <h2>Independence</h2>
+    <p>{SITE.name} is an independent site. It is not affiliated with, endorsed by or sponsored by OpenAI. ChatGPT is a trademark of OpenAI.</p>
+    <p>Questions or prompt ideas? <a href="/contact/">Contact us</a>, or browse the <a href="/blog/">blog</a> for step-by-step guides.</p>
+  </article></div>
+  <section class="sec">
+    <div class="wrap longform">
+      <h2>Why promptbin exists</h2>
+      <p>The idea came from a small, repeated annoyance. Someone posts a striking photo edit and says it was made with ChatGPT. The caption says "prompt in comments." The comments are a mess of screenshots, half-quotes and people asking for the same thing. By the time you piece together something usable, the edit no longer looks like the one you liked.</p>
+      <p>promptbin is our attempt to fix that for ourselves and for anyone else who has had the same experience. Prompts live in one place, they are written cleanly, and each one is ready to copy. There is no account, no paywall and no pop-up asking you to subscribe. You come, you copy, you leave with something that works.</p>
+
+      <h2>How we write and review prompts</h2>
+      <p>A prompt is not finished when it sounds good. Before one goes live, we read it against the failures people run into most often: a face that drifts, an extra person who was not in the photo, a background that ignores the light on the subject, and text with a wrong letter. Each prompt has to say what to change, what to keep the same and how to crop the result.</p>
+      <p>When a prompt falls short of that, we rewrite it rather than lower the bar. Usually the fix is a clearer identity line or a simpler description of the light. Where a look is unlikely to suit a certain kind of photo, we say so in the guide or in the prompt note. Results still vary with your photo, your ChatGPT plan and the app version, so every prompt on the site is a starting point, never a guarantee.</p>
+      <p>We keep prompts short on purpose. Past a certain length they start to contradict themselves, and the result gets less predictable, not more. Most of our prompts are between 30 and 80 words.</p>
+
+      <h2>What we will not publish</h2>
+      <ul>
+        <li>Prompts that imitate the style of a living artist or reproduce a protected character.</li>
+        <li>Prompts designed to mislead, such as forged documents, fake screenshots or edits that put real people in situations that never happened.</li>
+        <li>Anything that sexualizes minors or targets a private individual.</li>
+        <li>Claims that a prompt will always work. Results vary, and we say so.</li>
+      </ul>
+      <p>These are not legal lines so much as our own limits. We would rather have a smaller library we stand behind.</p>
+
+      <h2>How the site is run</h2>
+      <p>{SITE.manager.name} manages the platform: the library, the admin console where prompts and web stories are published, the guides and the technical side of the site. The site runs on Cloudflare, with the prompts, stories and images stored in a Cloudflare database, and it is built to load fast on a phone. We do not run ads or analytics scripts at the moment. If that changes, the <a href="/privacy-policy/">privacy policy</a> will change first.</p>
+      <p>If you spot something wrong, such as a prompt that does not work, a broken link or a guide that is out of date, <a href="/contact/">tell us</a>. Corrections are the fastest way the site gets better.</p>
+
+      <h2>Where promptbin is heading</h2>
+      <p>The plan is modest. More prompts for the looks people actually ask about, more web stories that make those prompts easy to scan on a phone, and more guides that answer specific questions rather than general ones. We would also like to make it easier to find a prompt when all you remember is how the finished picture looked. The prompt tool already helps with that, and we expect to keep improving it.</p>
+      <p>We will keep the site free. If anything about that ever changes, it will be announced clearly and well in advance, and the prompts already published will stay free to copy.</p>
+
+      <h2>Who this site is for</h2>
+      <p>promptbin is for people who want a good edit without learning a new tool: someone updating a profile photo, a couple making a card, a small business owner adding text to a product shot, a student preparing a poster. You do not need design experience. You need a photo, ChatGPT, and a prompt that tells it clearly what to do.</p>
+      <p>It is also for people who like to understand what they are pasting. If that is you, the <a href="/blog/">guides</a> explain the reasoning behind each prompt so you can write your own next time.</p>
+    </div>
+  </section>
+
+  <KeyPoints title="Key points: ChatGPT AI photo editing prompts at promptbin" items={KEY_POINTS.about} />
+  <FaqList title="About our ChatGPT AI photo editing prompts" items={ABOUT_FAQ} />
+</Base>

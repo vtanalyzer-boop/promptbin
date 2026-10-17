@@ -1,0 +1,88 @@
+---
+import Base from '../layouts/Base.astro';
+import FaqList from '../components/FaqList.astro';
+import { TOOL_FAQ } from '../data/extra-faq.js';
+import KeyPoints from '../components/KeyPoints.astro';
+import { KEY_POINTS } from '../data/extra-faq.js';
+import Answer from '../components/Answer.astro';
+import PageHead from '../components/PageHead.astro';
+const mods = ['Keep the original face, identity and proportions unchanged', 'Ultra-realistic skin texture and fine detail', 'Cinematic lighting with soft contrast', 'Shallow depth of field with gentle background blur', 'Subtle film grain', 'Warm, natural color grading', 'High resolution, sharp focus', 'Vertical 4:5 crop for Instagram', 'Do not add extra people, objects or text', 'Keep clothing and pose exactly the same'];
+const schema = [{ '@context': 'https://schema.org', '@type': 'WebApplication', name: 'promptbin Prompt Tool', applicationCategory: 'UtilitiesApplication',
+  operatingSystem: 'Any', offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, url: new URL('/ai-photo-prompt-tool/', Astro.site).href }];
+---
+<Base title="Free ChatGPT Prompt for Photo Editing Tool | promptbin"
+  description="Free tool to generate, modify, edit and correct any ChatGPT prompt for photo editing. Build ChatGPT AI photo editing prompts in your browser, no sign-up."
+  schema={schema}>
+  <PageHead tone="dusk" title="Free ChatGPT photo editing prompt tool" sub="Generate, modify, edit and correct any ChatGPT prompt for photo editing. Runs in your browser, nothing is uploaded." crumbs={[[null, 'Prompt tool']]} />
+  <section class="sec"><div class="wrap">
+    <Answer text="The promptbin prompt tool is a free, browser-based generator, modifier, editor and corrector for every ChatGPT prompt for photo editing. Choose a look, get a complete prompt that protects faces, and copy it into ChatGPT. Nothing you type is uploaded." />
+    <div class="tabs" role="tablist" aria-label="Prompt tool modes">
+      <button class="tab" role="tab" data-t="gen" aria-selected="true">Generator</button>
+      <button class="tab" role="tab" data-t="mod" aria-selected="false">Modifier</button>
+      <button class="tab" role="tab" data-t="edit" aria-selected="false">Editor</button>
+      <button class="tab" role="tab" data-t="fix" aria-selected="false">Corrector</button>
+    </div>
+
+    <div class="panel" id="p-gen"><h2>Prompt generator</h2><p class="intro">Choose the look. We write a complete prompt that also protects faces.</p>
+      <div class="fg"><div><label for="g-type">Edit type</label><select id="g-type"></select></div><div><label for="g-style">Style</label><select id="g-style"></select></div><div><label for="g-light">Lighting</label><select id="g-light"></select></div><div><label for="g-mood">Mood</label><select id="g-mood"></select></div><div><label for="g-color">Colors</label><select id="g-color"></select></div><div><label for="g-ratio">Output size</label><select id="g-ratio"></select></div></div>
+      <div class="fg"><div><label for="g-scene">Scene or background (optional)</label><input id="g-scene" type="text" placeholder="a quiet beach at sunset" maxlength="120" /></div>
+      <div><label for="g-text">Text on the photo (optional)</label><input id="g-text" type="text" placeholder="Summer 2026" maxlength="60" /></div></div>
+      <div class="row"><button class="btn" id="g-make" type="button">Generate prompt</button><button class="btn alt" id="g-rand" type="button">Surprise me</button></div>
+      <output class="out" id="g-out" data-ph="Your prompt appears here."></output>
+      <div class="row"><button class="btn sm" type="button" data-cp="g-out">Copy Prompt</button><button class="btn alt sm" type="button" data-send="e-in" data-from="g-out">Send to editor</button><button class="btn alt sm" type="button" data-send="c-in" data-from="g-out">Send to corrector</button></div>
+    </div>
+
+    <div class="panel" id="p-mod" hidden><h2>Prompt modifier</h2><p class="intro">Paste any prompt, tick the improvements you want, and apply.</p>
+      <label for="m-in">Your prompt</label><textarea id="m-in" placeholder="Edit my photo with a sunset background"></textarea>
+      <div class="checks" id="m-checks">{mods.map((m, i) => <label><input type="checkbox" value={m} checked={i === 0} />{m}</label>)}</div>
+      <div class="row"><button class="btn" id="m-apply" type="button">Apply modifiers</button><button class="btn alt" id="m-short" type="button">Shorten (remove filler)</button></div>
+      <output class="out" id="m-out" data-ph="Your modified prompt appears here."></output>
+      <div class="row"><button class="btn sm" type="button" data-cp="m-out">Copy Prompt</button><button class="btn alt sm" type="button" data-send="e-in" data-from="m-out">Send to editor</button></div>
+    </div>
+
+    <div class="panel" id="p-edit" hidden><h2>Prompt editor</h2><p class="intro">Write freely, count words, save favorites on this device, or download as a text file.</p>
+      <label for="e-in">Prompt</label><textarea id="e-in" placeholder="Write or paste your prompt here" style="min-height:200px"></textarea>
+      <div class="row"><button class="btn sm" type="button" data-cp="e-in">Copy Prompt</button><button class="btn alt sm" id="e-save" type="button">Save</button><button class="btn alt sm" id="e-dl" type="button">Download .txt</button>
+        <button class="btn alt sm" type="button" data-send="m-in" data-from="e-in">Send to modifier</button><button class="btn alt sm" type="button" data-send="c-in" data-from="e-in">Send to corrector</button>
+        <button class="btn alt sm" id="e-clear" type="button">Clear</button><span class="cnt" id="e-cnt"></span></div>
+      <h3 style="margin-top:1.5rem">Saved prompts</h3><p class="meta" id="e-none">Nothing saved yet. Saved prompts stay in this browser only.</p><ul class="saved" id="e-list"></ul>
+    </div>
+
+    <div class="panel" id="p-fix" hidden><h2>Prompt corrector</h2><p class="intro">Fixes common typos, spacing, capital letters, repeated words and duplicate sentences.</p>
+      <label for="c-in">Your prompt</label><textarea id="c-in" placeholder="edit my photoo wiht cinamatic ligting dont change face"></textarea>
+      <div class="checks"><label><input type="checkbox" id="c-safe" checked />Add a face-safety line if missing</label></div>
+      <div class="row"><button class="btn" id="c-run" type="button">Correct prompt</button></div>
+      <output class="out" id="c-out" data-ph="Your corrected prompt appears here."></output><p class="fixes" id="c-fix"></p>
+      <div class="row"><button class="btn sm" type="button" data-cp="c-out">Copy Prompt</button><button class="btn alt sm" type="button" data-send="e-in" data-from="c-out">Send to editor</button></div>
+    </div>
+  </div></section>
+
+  <section class="sec w"><div class="wrap longform">
+    <h2>How the prompt tool works</h2>
+    <p>This free tool helps you write better ChatGPT AI photo editing prompts without guessing. It has four modes that you can use alone or together. Everything runs in your browser, so the text you type is never uploaded.</p>
+    <div class="cols2" style="margin-top:1.2rem">
+      <div class="card"><h3>Generator</h3><p>Choose an edit type, style, lighting, mood, colors and crop. The generator writes a complete ChatGPT prompt for photo editing with a face-safety line. Use the Couple photo type to get a couple prompt ChatGPT can follow, or fill in the text field for ChatGPT photo editing prompts text.</p></div>
+      <div class="card"><h3>Modifier</h3><p>Paste a prompt you already have and tick improvements such as realistic skin, a 4:5 crop or "do not add extra people". You can also remove filler words in one click.</p></div>
+      <div class="card"><h3>Editor</h3><p>Write freely, count words, save favorites on your device and download them as a text file. Send a prompt to the modifier or corrector with one tap.</p></div>
+      <div class="card"><h3>Corrector</h3><p>Fixes typos, spacing, capital letters, repeated words and duplicate sentences. Handy when you copy a prompt seen ChatGPT creators posted, because those often have small errors.</p></div>
+    </div>
+    <h2>Tips for better ChatGPT photo editing prompts</h2>
+    <p>The best ChatGPT photo editing prompts share one structure every time, so use these habits whenever you write or edit one.</p>
+    <ul>
+      <li>Say what to change and what to keep, in that order.</li>
+      <li>Name one style and one lighting idea. Too many styles blur the result.</li>
+      <li>For text on photos, give the exact words, a style such as bold sans-serif, and a position that avoids faces.</li>
+      <li>For ChatGPT photo editing prompts trending Instagram looks, set the crop first: 4:5 for the feed, 9:16 for Stories.</li>
+      <li>Ask for one correction at a time.</li>
+    </ul>
+    <h2>Which mode should I use?</h2>
+    <p>Use the generator when you need a fresh ChatGPT prompt for photo editing. Use the modifier to upgrade a prompt seen ChatGPT creators shared, and the corrector to clean up typos. For ChatGPT photo editing prompts text, write the exact words in the editor first, then send the prompt to the corrector so every letter is checked.</p>
+    <p>Making a couple prompt ChatGPT can follow? Pick the Couple photo type in the generator so the identity lock covers both people. Copying ChatGPT photo editing prompts trending Instagram creators use? Paste them into the modifier, keep the look, and set the crop for your feed. A well-edited ChatGPT prompt for photo editing is short, specific and safe for faces.</p>
+    <p>Want the theory behind the tool? Read our <a href="/blog/chatgpt-prompt-for-photo-editing-formula/">six-part formula</a> or the <a href="/blog/how-to-use-chatgpt-photo-editing-prompts/">step-by-step guide</a>.</p>
+  </div></section>
+
+  <KeyPoints title="Key points: ChatGPT AI photo editing prompts tool" items={KEY_POINTS.tool} />
+  <FaqList title="ChatGPT AI photo editing prompts tool: common questions" items={TOOL_FAQ} />
+
+  <script>import '../scripts/tool.js';</script>
+</Base>

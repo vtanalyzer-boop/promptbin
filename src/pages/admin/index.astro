@@ -1,0 +1,88 @@
+---
+export const prerender = false;
+import Admin from '../../layouts/Admin.astro';
+import { listPrompts, CATS, imageUrl } from '../../lib/store.js';
+import { getImgSafe } from '../../data/images.js';
+
+const all = await listPrompts();
+const rows = all.map((p) => ({
+  ...p,
+  thumb: imageUrl(p, 400) || getImgSafe(p.slug)?.src || null,
+  custom: Boolean(p.image),
+}));
+const stats = {
+  total: all.length,
+  live: all.filter((p) => p.published).length,
+  draft: all.filter((p) => !p.published).length,
+  photos: all.filter((p) => p.image).length,
+};
+const data = JSON.stringify(rows).replace(/</g, '\\u003c');
+---
+<Admin title="Prompts" active="prompts">
+  <main class="wrap">
+    <div class="stats">
+      <div class="stat"><b>{stats.total}</b><span>Prompts</span></div>
+      <div class="stat"><b>{stats.live}</b><span>Published</span></div>
+      <div class="stat"><b>{stats.draft}</b><span>Drafts</span></div>
+      <div class="stat"><b>{stats.photos}</b><span>With your own photo</span></div>
+    </div>
+
+    <div class="adm-grid">
+      <section class="panel adm-form" aria-labelledby="ft">
+        <h2 id="ft" style="font-size:1.3rem">Add prompt</h2>
+        <p class="meta" style="margin:.3rem 0 1rem">Upload a photo and its prompt. It appears on the home page right away.</p>
+        <form id="f" novalidate>
+          <input type="hidden" name="id" id="f-id" />
+          <div><label for="f-title">Title</label><input id="f-title" name="title" type="text" maxlength="80" required placeholder="Golden hour portrait" /></div>
+          <div>
+            <label>Categories</label>
+            <div class="pills" id="f-cats">
+              {CATS.map((c) => <label><input type="checkbox" value={c} /><span>{c[0].toUpperCase() + c.slice(1)}</span></label>)}
+            </div>
+          </div>
+          <div><label for="f-text">Prompt <span class="meta" id="f-count" style="float:right"></span></label><textarea id="f-text" name="text" maxlength="1200" required placeholder="Edit my photo into..."></textarea></div>
+          <div>
+            <label for="f-img">Photo</label>
+            <div class="drop" id="drop">
+              <input id="f-img" name="image" type="file" accept="image/jpeg,image/png,image/webp,image/avif" />
+              <strong id="drop-t">Click or drop a photo</strong>
+              <small>JPG, PNG, WebP or AVIF, up to 10 MB. Auto-cropped to 4:5 and converted to WebP in your browser.</small>
+              <img id="prev" alt="" hidden />
+            </div>
+          </div>
+          <label style="display:flex;gap:.5rem;align-items:center;font-weight:600"><input type="checkbox" id="f-pub" checked style="width:18px;height:18px;accent-color:var(--flash)" /> Published</label>
+          <p class="msg" id="msg" role="alert"></p>
+          <div class="row" style="margin:0"><button class="btn" id="save" type="submit">Save prompt</button><button class="btn alt" id="cancel" type="button" hidden>Cancel edit</button></div>
+        </form>
+      </section>
+
+      <section aria-labelledby="lt">
+        <div class="row" style="margin:0 0 .8rem;justify-content:space-between">
+          <h2 id="lt" style="font-size:1.3rem;margin:0">All prompts</h2>
+          <input id="s" type="search" placeholder="Search" aria-label="Search prompts" style="max-width:220px" />
+        </div>
+        <div class="rows" id="rows">
+          {rows.map((p) => (
+            <article class="arow" data-id={p.id}>
+              {p.thumb ? <img src={p.thumb} alt="" width="56" height="70" loading="lazy" /> : <div class="phimg"></div>}
+              <div>
+                <h3>{p.title}</h3>
+                <span class={`pill${p.published ? '' : ' draft'}`}>{p.published ? 'Published' : 'Draft'}</span>
+                {!p.custom && <span class="pill ph">Placeholder image</span>}
+                <span class="meta">{p.cats}</span>
+                <p>{p.text}</p>
+              </div>
+              <div class="acts2">
+                <button class="btn alt sm" data-a="edit">Edit</button>
+                <button class="btn alt sm" data-a="toggle">{p.published ? 'Unpublish' : 'Publish'}</button>
+                <button class="btn alt sm dng" data-a="del">Delete</button>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    </div>
+    <script type="application/json" id="data" set:html={data}></script>
+  </main>
+  <script>import '../../scripts/admin.js';</script>
+</Admin>

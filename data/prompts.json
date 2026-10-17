@@ -1,0 +1,202 @@
+[
+  {
+    "id": "golden-hour-portrait",
+    "slug": "golden-hour-portrait",
+    "title": "Golden hour portrait",
+    "cats": "trending portrait",
+    "text": "Edit my photo into a golden hour portrait. Warm sunlight from behind, soft rim light on the hair, gentle lens flare, natural skin texture and shallow depth of field. Keep my face, hairstyle and proportions exactly the same. Vertical 4:5 for Instagram.",
+    "image": "d32a8ed16520",
+    "published": true,
+    "createdAt": "2026-10-01T00:00:00.000Z"
+  },
+  {
+    "id": "cinematic-couple-street",
+    "slug": "cinematic-couple-street",
+    "title": "Cinematic couple on a neon street",
+    "cats": "couple trending",
+    "text": "Transform this photo of two people into a cinematic night street scene with neon reflections on wet pavement. Keep both faces, outfits and body language unchanged. Add soft teal and orange color grading, subtle film grain and a 35mm look. Vertical 4:5.",
+    "image": null,
+    "published": true,
+    "createdAt": "2026-09-30T23:59:59.000Z"
+  },
+  {
+    "id": "couple-sunset-beach",
+    "slug": "couple-sunset-beach",
+    "title": "Couple at sunset beach",
+    "cats": "couple",
+    "text": "Place the couple in my photo on a quiet beach at sunset. Warm pink and orange sky, gentle waves, soft light on both faces. Keep both people recognizable with the same faces, skin tones and poses. Realistic, romantic and uncluttered.",
+    "image": null,
+    "published": true,
+    "createdAt": "2026-09-30T23:59:58.000Z"
+  },
+  {
+    "id": "minimal-studio-portrait",
+    "slug": "minimal-studio-portrait",
+    "title": "Minimal studio portrait",
+    "cats": "portrait",
+    "text": "Edit this photo into a clean studio portrait on a seamless light grey backdrop. Soft box lighting, natural skin retouching, sharp eyes, no heavy smoothing. Keep my face and expression unchanged. Square 1:1.",
+    "image": null,
+    "published": true,
+    "createdAt": "2026-09-30T23:59:57.000Z"
+  },
+  {
+    "id": "magazine-cover-text",
+    "slug": "magazine-cover-text",
+    "title": "Magazine cover with text",
+    "cats": "text trending",
+    "text": "Turn my photo into a magazine-style cover. Add the headline \"YOUR TEXT HERE\" in bold sans-serif at the top and a small subtitle at the bottom. Keep my face fully visible and not covered by any text. Soft studio lighting and muted colors.",
+    "image": null,
+    "published": true,
+    "createdAt": "2026-09-30T23:59:56.000Z"
+  },
+  {
+    "id": "quote-overlay",
+    "slug": "quote-overlay",
+    "title": "Quote overlay in handwriting",
+    "cats": "text",
+    "text": "Add the quote \"YOUR QUOTE HERE\" in elegant handwritten lettering in the lower third of my photo. White text with a soft shadow so it stays readable. Slightly darken the lower background and keep faces and the main subject untouched.",
+    "image": null,
+    "published": true,
+    "createdAt": "2026-09-30T23:59:55.000Z"
+  },
+  {
+    "id": "hand-painted-anime",
+    "slug": "hand-painted-anime",
+    "title": "Hand-painted anime frame",
+    "cats": "style trending",
+    "text": "Redraw my photo as a hand-painted anime film frame. Soft watercolor sky, painterly clouds, gentle outlines and a warm natural palette. Keep my pose, outfit and the likeness of my face.",
+    "image": null,
+    "published": true,
+    "createdAt": "2026-09-30T23:59:54.000Z"
+  },
+  {
+    "id": "vintage-film",
+    "slug": "vintage-film",
+    "title": "90s disposable camera",
+    "cats": "style trending",
+    "text": "Give this photo the look of a 1990s disposable camera. Direct flash, slightly faded colors, soft grain, small light leaks and a warm date-stamp feel. Do not change faces or poses.",
+    "image": null,
+    "published": true,
+    "createdAt": "2026-09-30T23:59:53.000Z"
+  },
+  {
+    "id": "cafe-background",
+    "slug": "cafe-background",
+    "title": "Cozy cafe background",
+    "cats": "background",
+    "text": "Replace only the background with a cozy window-side cafe in soft morning light. Match the lighting direction on my face. Keep my face, clothes and the edges of my hair exactly as they are. Natural, realistic result.",
+    "image": null,
+    "published": true,
+    "createdAt": "2026-09-30T23:59:52.000Z"
+  },
+  {
+    "id": "remove-crowd",
+    "slug": "remove-crowd",
+    "title": "Remove people in the background",
+    "cats": "background",
+    "text": "Remove all strangers and clutter from the background and fill the space with natural scenery that matches the light and perspective. Do not blur or alter the main subject. Keep the original color tones.",
+    "image": null,
+    "published": true,
+    "createdAt": "2026-09-30T23:59:51.000Z"
+  },
+  {
+    "id": "festival-lights-couple",
+    "slug": "festival-lights-couple",
+    "title": "Festive lights couple",
+    "cats": "couple",
+    "text": "Edit this couple photo into a festive evening scene with warm string lights and soft bokeh. Keep clothes, faces and skin tones the same. Add a gentle glow, a calm mood and a vertical 9:16 crop for Stories.",
+    "image": null,
+    "published": true,
+    "createdAt": "2026-09-30T23:59:50.000Z"
+  },
+  {
+    "id": "bw-moody-portrait",
+    "slug": "bw-moody-portrait",
+    "title": "Moody black and white",
+    "cats": "portrait style",
+    "text": "Convert my photo into a moody black and white portrait with deep shadows, strong contrast and fine film grain. Dramatic side lighting, sharp eyes, natural skin texture. Keep my face unchanged.",
+    "image": null,
+    "published": true,
+    "createdAt": "2026-09-30T23:59:49.000Z"
+  },
+  {
+    "id": "tiny-collectible",
+    "slug": "tiny-collectible",
+    "title": "Collectible figure style",
+    "cats": "trending style",
+    "text": "Create a glossy, collectible-style figure of the person in my photo standing on a small round display base. Clean studio backdrop, soft reflections, accurate clothing colors and a face that clearly resembles me. Square 1:1.",
+    "image": null,
+    "published": true,
+    "createdAt": "2026-09-30T23:59:48.000Z"
+  },
+  {
+    "id": "rainy-city-couple",
+    "slug": "rainy-city-couple",
+    "title": "Rainy city evening couple",
+    "cats": "couple",
+    "text": "Edit this couple photo into a rainy evening in a city. Shared umbrella, soft street lights reflecting on wet pavement, gentle mist and a calm romantic mood. Keep both faces, hairstyles and clothes unchanged and make sure neither person is hidden by the umbrella.",
+    "image": null,
+    "published": true,
+    "createdAt": "2026-09-30T23:59:47.000Z"
+  },
+  {
+    "id": "polaroid-couple",
+    "slug": "polaroid-couple",
+    "title": "Instant film couple portrait",
+    "cats": "couple style",
+    "text": "Turn this couple photo into an instant-film print with a white border, slightly faded colors, soft flash and a handwritten caption line that says \"US, 2026\". Keep both faces natural and recognizable and do not change body proportions.",
+    "image": null,
+    "published": true,
+    "createdAt": "2026-09-30T23:59:46.000Z"
+  },
+  {
+    "id": "birthday-card-text",
+    "slug": "birthday-card-text",
+    "title": "Birthday card with name",
+    "cats": "text",
+    "text": "Turn my photo into a birthday card. Add the text \"HAPPY BIRTHDAY, NAME\" in playful rounded lettering above my head, with small confetti around the edges. Keep my face and expression untouched, and keep every letter spelled exactly as written.",
+    "image": null,
+    "published": true,
+    "createdAt": "2026-09-30T23:59:45.000Z"
+  },
+  {
+    "id": "travel-poster-text",
+    "slug": "travel-poster-text",
+    "title": "Travel poster with title",
+    "cats": "text trending",
+    "text": "Edit my photo into a vintage travel poster. Add the title \"VISIT YOUR CITY\" in bold condensed letters at the bottom on a solid color band, flatten the colors slightly and add a subtle paper texture. Keep my face clear and recognizable.",
+    "image": null,
+    "published": true,
+    "createdAt": "2026-09-30T23:59:44.000Z"
+  },
+  {
+    "id": "polaroid-collage",
+    "slug": "polaroid-collage",
+    "title": "Three-frame photo collage",
+    "cats": "trending style",
+    "text": "Arrange my photo into a collage of three instant-film frames on a soft beige table, each frame showing a slightly different crop of the same image. Gentle shadows, natural light from a window and no changes to my face in any frame. Vertical 4:5.",
+    "image": null,
+    "published": true,
+    "createdAt": "2026-09-30T23:59:43.000Z"
+  },
+  {
+    "id": "pro-headshot",
+    "slug": "pro-headshot",
+    "title": "Professional headshot",
+    "cats": "portrait",
+    "text": "Turn my casual photo into a professional headshot. Neutral blurred office background, soft front lighting, tidy collar and hair, natural skin texture without over-smoothing. Keep my face, age and expression exactly the same. Square 1:1.",
+    "image": null,
+    "published": true,
+    "createdAt": "2026-09-30T23:59:42.000Z"
+  },
+  {
+    "id": "comic-panel",
+    "slug": "comic-panel",
+    "title": "Comic book panel",
+    "cats": "style trending",
+    "text": "Redraw my photo as a single comic book panel with bold ink outlines, halftone shading and a flat color palette. Keep my pose, outfit and face shape recognizable, and leave a small empty speech bubble in the upper corner.",
+    "image": null,
+    "published": true,
+    "createdAt": "2026-09-30T23:59:41.000Z"
+  }
+]

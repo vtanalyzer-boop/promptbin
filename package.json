@@ -1,0 +1,25 @@
+{
+  "name": "promptbin",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "start": "node ./dist/server/entry.mjs",
+    "preview": "astro preview",
+    "seo:keywords": "node scripts/keyword-report.mjs",
+    "seo:audit": "node scripts/seo-audit.mjs"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^14.3.4",
+    "astro": "^7.3.8",
+    "sharp": "^0.35.5"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "wrangler": "^4.149.0"
+  }
+}

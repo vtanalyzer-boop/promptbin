@@ -1,0 +1,90 @@
+---
+export const prerender = false;
+import Admin from '../../layouts/Admin.astro';
+import { listStories, slideSrc, coverSrc, LIMITS } from '../../lib/stories.js';
+
+const all = await listStories({ limit: 200 });
+const rows = all.map((s) => ({
+  id: s.id, title: s.title, description: s.description, published: s.published,
+  outlinkUrl: s.outlinkUrl, outlinkText: s.outlinkText,
+  cover: s.cover, coverUrl: coverSrc(s.cover),
+  slides: s.slides.map((x) => ({ ...x, url: slideSrc(x.image) })),
+}));
+const stats = { total: all.length, live: all.filter((s) => s.published).length, draft: all.filter((s) => !s.published).length, slides: all.reduce((n, s) => n + s.slides.length, 0) };
+const data = JSON.stringify({ rows, limits: LIMITS }).replace(/</g, '\\u003c');
+---
+<Admin title="Web Stories" active="stories">
+  <main class="wrap">
+    <div class="stats">
+      <div class="stat"><b>{stats.total}</b><span>Web stories</span></div>
+      <div class="stat"><b>{stats.live}</b><span>Published</span></div>
+      <div class="stat"><b>{stats.draft}</b><span>Drafts</span></div>
+      <div class="stat"><b>{stats.slides}</b><span>Slides in total</span></div>
+    </div>
+
+    <div class="adm-grid adm-grid--wide">
+      <section class="panel adm-form" aria-labelledby="ft">
+        <h2 id="ft" style="font-size:1.3rem">New web story</h2>
+        <p class="meta" style="margin:.3rem 0 1rem">Web stories are full-screen, tap-through slides that can appear in Google Search and Discover. Use {LIMITS.minSlides} to {LIMITS.maxSlides} slides: one idea per slide, a short headline and one or two lines of text.</p>
+        <form id="f" novalidate>
+          <input type="hidden" id="f-id" />
+          <div><label for="f-title">Story title <span class="meta" id="c-title" style="float:right"></span></label><input id="f-title" type="text" maxlength={LIMITS.title} placeholder="5 ChatGPT prompts for a golden hour portrait" required /></div>
+          <div><label for="f-desc">Description <span class="meta" id="c-desc" style="float:right"></span></label><textarea id="f-desc" maxlength={LIMITS.description} style="min-height:80px" placeholder="One or two sentences that say what the story shows."></textarea></div>
+          <div>
+            <label for="f-cover">Cover image (3:4 poster shown in Google and on the stories page)</label>
+            <div class="drop" id="cover-drop">
+              <input id="f-cover" type="file" accept="image/jpeg,image/png,image/webp,image/avif" />
+              <strong id="cover-t">Click or drop a cover image</strong>
+              <small>Portrait works best. Cropped to 640 x 853 automatically.</small>
+              <img id="cover-prev" alt="" hidden />
+            </div>
+          </div>
+
+          <div>
+            <div class="row" style="margin:0 0 .5rem;justify-content:space-between"><label style="margin:0">Slides <span class="meta" id="c-slides"></span></label><button class="btn alt sm" id="add" type="button">+ Add slide</button></div>
+            <div id="slides" class="slides"></div>
+          </div>
+
+          <fieldset class="fs">
+            <legend>Last-slide button (optional)</legend>
+            <div><label for="f-url">Link address</label><input id="f-url" type="text" placeholder="/blog/ or https://promptbin.in/" /></div>
+            <div><label for="f-cta">Button text</label><input id="f-cta" type="text" maxlength={LIMITS.cta} placeholder="Get the prompts" /></div>
+          </fieldset>
+
+          <label style="display:flex;gap:.5rem;align-items:center;font-weight:600"><input type="checkbox" id="f-pub" checked style="width:18px;height:18px;accent-color:var(--flash)" /> Published</label>
+          <p class="msg" id="msg" role="alert"></p>
+          <div class="row" style="margin:0"><button class="btn" id="save" type="submit">Save story</button><button class="btn alt" id="cancel" type="button" hidden>Cancel edit</button></div>
+        </form>
+      </section>
+
+      <section aria-labelledby="lt">
+        <div class="row" style="margin:0 0 .8rem;justify-content:space-between">
+          <h2 id="lt" style="font-size:1.3rem;margin:0">All web stories</h2>
+          <input id="s" type="search" placeholder="Search" aria-label="Search stories" style="max-width:220px" />
+        </div>
+        <div class="rows" id="rows">
+          {rows.length === 0 && <p class="meta">No stories yet. Create the first one with the form.</p>}
+          {rows.map((p) => (
+            <article class="arow" data-id={p.id}>
+              <img src={p.coverUrl} alt="" width="56" height="75" loading="lazy" />
+              <div>
+                <h3>{p.title}</h3>
+                <span class={`pill${p.published ? '' : ' draft'}`}>{p.published ? 'Published' : 'Draft'}</span>
+                <span class="meta">{p.slides.length} slides</span>
+                <p>{p.description}</p>
+              </div>
+              <div class="acts2">
+                <a class="btn alt sm" href={`/web-stories/${p.id}/`} target="_blank" rel="noopener">View</a>
+                <button class="btn alt sm" data-a="edit">Edit</button>
+                <button class="btn alt sm" data-a="toggle">{p.published ? 'Unpublish' : 'Publish'}</button>
+                <button class="btn alt sm dng" data-a="del">Delete</button>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    </div>
+    <script type="application/json" id="data" set:html={data}></script>
+  </main>
+  <script>import '../../scripts/admin-stories.js';</script>
+</Admin>

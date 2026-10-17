@@ -1,0 +1,67 @@
+---
+import Legal from '../layouts/Legal.astro';
+import { SITE } from '../data/site.js';
+---
+<Legal title="Terms and conditions" seoTitle="Terms and Conditions | promptbin Photo Prompts" description="Terms for using promptbin: free ChatGPT AI photo editing prompts, the prompt tool and web stories. Read the rules for use, content and liability." crumb="Terms">
+  <h2>Acceptance of these terms</h2>
+  <p>By using {Astro.site.origin} you agree to these terms. If you do not agree, please do not use the site. These terms sit alongside our <a href="/privacy-policy/">privacy policy</a> and <a href="/disclaimer/">disclaimer</a>.</p>
+  <h2>What {SITE.name} is</h2>
+  <p>{SITE.name} is a free website that offers copy-ready ChatGPT AI photo editing prompts, a free browser-based <a href="/ai-photo-prompt-tool/">prompt tool</a>, <a href="/web-stories/">web stories</a>, <a href="/blog/">blog guides</a> and an <a href="/faq/">FAQ</a>. The platform is managed by {SITE.manager.name}. We are an independent site and are not affiliated with, endorsed by or sponsored by OpenAI. ChatGPT is a trademark of OpenAI.</p>
+  <h2>Using the prompts</h2>
+  <p>Prompts are provided as starting points. You may copy them and use them on your own images, for personal and commercial purposes, without paying us. You do not have to credit us, though a link is always welcome.</p>
+  <p>You may not copy our site design, code or articles in bulk, or republish them as your own. Copying a prompt for your own use is fine. Copying the whole library to publish elsewhere is not.</p>
+  <h2>Your images and your responsibilities</h2>
+  <p>In plain words: you are responsible for what you do with the prompts. Specifically:</p>
+  <ul>
+    <li>You are responsible for having the rights to every photo you edit.</li>
+    <li>You are responsible for getting the consent of the people shown in those photos.</li>
+    <li>You are responsible for following OpenAI's own terms and usage policies when you use ChatGPT.</li>
+    <li>You are responsible for checking the results before you share or publish them.</li>
+  </ul>
+  <p>We never see your photos. Visitors upload nothing to promptbin, so we cannot review or take responsibility for what you create elsewhere.</p>
+  <h2>Acceptable use</h2>
+  <p>Do not use the site or its prompts to:</p>
+  <ul>
+    <li>impersonate anyone, or create deceptive or misleading edits of real people;</li>
+    <li>make non-consensual intimate imagery;</li>
+    <li>create fake documents, such as forged IDs or certificates;</li>
+    <li>sexualise minors in any way;</li>
+    <li>harass, threaten or harm others, or edit images of people without their consent.</li>
+  </ul>
+  <p>You also must not scrape the site in a way that overloads it, or try to break into the admin console or bypass the site's security.</p>
+  <h2>Submissions</h2>
+  <p>You can send us prompt suggestions through the <a href="/contact/">contact page</a>. We may edit and publish them. By sending a submission you confirm it is your own work, and you give promptbin permission to publish and adapt it. We do not have to publish anything, and we do not pay for submissions. If you want a submission removed later, email <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+  <h2>Intellectual property</h2>
+  <p>Site content, including text, the prompts as published and the design, belongs to {SITE.name}. ChatGPT and OpenAI are trademarks of their owners. Preview images are illustrations of each style, and are not outputs from any specific AI model.</p>
+  <h2>Accounts and the admin console</h2>
+  <p>Visitors do not have accounts, and you cannot log in to promptbin. A password-protected admin console exists for the site owner only, to add and edit prompts, web stories and images. You must not try to access it, guess its password or interfere with how it works. Failed login attempts are counted per IP address for a short time to block guessing, and we may block anyone who keeps trying.</p>
+  <h2>Using prompts with ChatGPT</h2>
+  <p>The prompts are written to be pasted into ChatGPT, but promptbin does not run, host or control ChatGPT. Whether a prompt works depends on your OpenAI account and the features available to you. If ChatGPT refuses a request, changes how it behaves or limits your usage, that is a matter between you and OpenAI. Please follow OpenAI's usage policies, including its rules about uploading photos of other people.</p>
+  <h2>Commercial use in plain words</h2>
+  <p>Using a prompt for your own business, for example for product photos, social media posts or client work, is allowed. What the prompt produces is your responsibility. We cannot promise that an AI result is free of anyone else's rights, so check the output before you rely on it. This is why you should only edit images you have the right to use.</p>
+  <h2>Third-party services</h2>
+  <p>The site relies on, or links to, services run by other companies:</p>
+  <ul>
+    <li><strong>ChatGPT and OpenAI:</strong> where you use the prompts. Their terms apply to that use, not ours.</li>
+    <li><strong>Google Website Translator:</strong> optional, used only when you choose a language other than English.</li>
+    <li><strong>Cloudflare:</strong> hosts and protects the site.</li>
+    <li><strong>Formspree:</strong> processes contact form messages.</li>
+  </ul>
+  <p>Links to third parties are provided for convenience and do not mean we endorse them. We are not responsible for their content or practices.</p>
+  <h2>Links to promptbin</h2>
+  <p>You are welcome to link to any page on the site. Please do not suggest that promptbin endorses you, your product or your service, and do not frame our pages inside yours in a way that hides where they come from.</p>
+  <h2>Availability and no guarantee of results</h2>
+  <p>AI tools can produce different outputs for the same prompt, depending on your photo, your ChatGPT version, plan and region, and the wording you use. We do not guarantee any specific result, availability or quality. The site may be down for maintenance or because of problems we do not control.</p>
+  <h2>Disclaimers</h2>
+  <p>The site is provided "as is" and "as available". We do not make promises that it will be error-free, always online or suited to a particular purpose. Content is for general information only and is not medical, legal, financial or other professional advice.</p>
+  <h2>Limitation of liability</h2>
+  <p>To the extent permitted by law, {SITE.name} and the people who run it are not liable for any loss or damage arising from your use of the site, or from content generated with third-party AI tools. Some places do not allow certain limits, so this applies only as far as the law allows. Nothing in these terms removes rights you have that cannot legally be removed.</p>
+  <h2>Termination and blocking</h2>
+  <p>We may block access, or remove content, if someone breaks these terms, harms the site or tries to attack its security. You can stop using the site at any time.</p>
+  <h2>Changes to the site and the terms</h2>
+  <p>We can change or withdraw content, prompts, web stories or features whenever we need to. We may also update these terms. The date at the top shows the latest revision, and continuing to use the site after a change means you accept the new version.</p>
+  <h2>Governing law</h2>
+  <p>These terms are governed by the laws of India. Any dispute that cannot be settled informally will be handled by the courts that have authority under those laws.</p>
+  <h2>Contact</h2>
+  <p>Questions about these terms? Email <a href={`mailto:${SITE.email}`}>{SITE.email}</a> or use the <a href="/contact/">contact page</a>.</p>
+</Legal>

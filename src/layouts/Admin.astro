@@ -1,0 +1,31 @@
+---
+import '../styles/global.css';
+import Logo from '../components/Logo.astro';
+const { title = 'Console', authed = true, active = '' } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>{title} | promptbin Console</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  </head>
+  <body class="adm">
+    {authed && (
+      <header class="adm-top"><div class="wrap">
+        <a class="logo" href="/admin/" style="color:#fff"><Logo />Console</a>
+        <nav class="links" aria-label="Console">
+          <a href="/admin/" aria-current={active === 'prompts' ? 'page' : undefined}>Prompts</a>
+          <a href="/admin/stories/" aria-current={active === 'stories' ? 'page' : undefined}>Web Stories</a>
+          <a href="/" target="_blank" rel="noopener">View site</a>
+          <form method="post" action="/api/admin/logout/"><button class="btn alt sm" type="submit" style="color:#fff;border-color:#fff">Log out</button></form>
+        </nav>
+      </div></header>
+    )}
+    <slot />
+    <div id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

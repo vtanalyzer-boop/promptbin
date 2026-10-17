@@ -1,0 +1,246 @@
+---
+// Rendered on the server so prompts uploaded in /admin appear immediately (HTML is still fully crawlable).
+export const prerender = false;
+import FilmStrip from '../components/FilmStrip.astro';
+import Base from '../layouts/Base.astro';
+import Answer from '../components/Answer.astro';
+import PromptCard from '../components/PromptCard.astro';
+import { PROMPTS, FILTERS } from '../data/prompts.js';
+import { listPrompts } from '../lib/store.js';
+import { FAQ, faqSchema } from '../data/faq.js';
+const HOME_FAQ = [0, 1, 2, 3, 5, 6, 8, 9, 14, 16, 17, 18, 19, 20, 21, 23, 24, 25, 26].map((i) => FAQ[i]);
+import { SITE } from '../data/site.js';
+import { getCollection } from 'astro:content';
+import { listStories, coverSrc } from '../lib/stories.js';
+
+Astro.response.headers.set('Cache-Control', 'public, max-age=60, s-maxage=120, stale-while-revalidate=300');
+
+let items = [];
+try { items = await listPrompts({ publishedOnly: true }); } catch { items = []; }
+if (!items.length) items = PROMPTS.map((p) => ({ ...p, image: null }));
+
+const stories = (await listStories({ publishedOnly: true, limit: 4 }));
+const posts = (await getCollection('blog')).sort((a, b) => +b.data.pubDate - +a.data.pubDate).slice(0, 3);
+const demo = items.slice(0, 4).map((p) => ({ t: p.title, x: p.text }));
+const first = demo[0];
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'WebSite', name: SITE.name, url: Astro.site.href,
+    potentialAction: { '@type': 'SearchAction', target: `${Astro.site.href}?q={q}`, 'query-input': 'required name=q' } },
+  { '@context': 'https://schema.org', '@type': 'Organization', name: SITE.name, url: Astro.site.href, email: SITE.email, logo: new URL('/web-app-manifest-512x512.png', Astro.site).href,
+    founder: { '@type': 'Person', name: SITE.manager.name, jobTitle: SITE.manager.role },
+    contactPoint: { '@type': 'ContactPoint', email: SITE.email, contactType: 'customer support' } },
+  faqSchema(HOME_FAQ),
+];
+---
+<Base
+  title="ChatGPT AI Photo Editing Prompts (Copy & Paste) | promptbin"
+  description="Copy free ChatGPT AI photo editing prompts for trending Instagram looks, couple photos and text edits. Tap Copy Prompt, paste into ChatGPT and you are done."
+  keywords="chatgpt ai photo editing prompts, chatgpt photo editing prompts, chatgpt photo editing prompts trending instagram, chatgpt prompt for photo editing, prompt seen chatgpt, chatgpt photo editing prompts text, couple prompt chatgpt"
+  schema={schema}
+>
+  <section class="hero2 hero2--home" data-tone="pink">
+    <FilmStrip />
+    <div class="wrap">
+      <div>
+        <h1>ChatGPT AI photo editing prompts you can copy in one tap</h1>
+        <p class="typing">
+          <span class="sr">Prompts for trending Instagram edits, couple photos, text on photos, portrait glow-ups and background swaps.</span>
+          <span aria-hidden="true">Prompts for <span class="typed" id="typed" data-words={JSON.stringify(['trending Instagram edits', 'couple photos', 'text on photos', 'portrait glow-ups', 'background swaps', 'film and retro looks'])}>trending Instagram edits</span><span class="caret"></span></span>
+        </p>
+        <p class="lead">Tap Copy Prompt on any of our ChatGPT photo editing prompts, paste it into ChatGPT with your photo, and finish a polished edit in seconds. Free, fast and no sign-up.</p>
+        <div class="acts"><a class="btn" href="#library">Browse prompts</a><a class="btn alt" href="/ai-photo-prompt-tool/">Open prompt tool</a></div>
+      </div>
+      <div class="composer" id="composer" data-items={JSON.stringify(demo)}>
+        <div class="cbar"><i></i><span><b>my-photo.jpg</b> attached in ChatGPT</span></div>
+        <p class="ctext" translate="no"><span id="ctext">{first.x}</span><span class="caret" style="background:var(--flash)"></span></p>
+        <div class="cfoot"><span class="meta" id="ctitle">{first.t}</span><button class="btn sm pulse" id="ccopy" type="button" data-copy={first.x} data-label="Copy Prompt">Copy Prompt</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-bottom:0">
+    <div class="wrap"><Answer label="Quick answer" text="ChatGPT AI photo editing prompts are short written instructions you paste into ChatGPT together with a photo to change its light, style, background or text while keeping the face unchanged. promptbin gives you free, copy-ready ChatGPT photo editing prompts, a prompt tool and web stories, so you can finish an edit in one tap." /></div>
+  </section>
+
+  <section class="sec" id="library">
+    <div class="wrap">
+      <h2>Copy-ready ChatGPT photo editing prompts</h2>
+      <p class="intro">Every ChatGPT prompt for photo editing below says what to change and what to keep the same. Replace any placeholder text, then paste it into ChatGPT with your photo. Preview images are illustrations of each style.</p>
+      <div class="bar">
+        <input id="q" type="search" placeholder="Search prompts, for example couple or text" aria-label="Search prompts" />
+        <div class="chips" role="group" aria-label="Filter prompts">
+          {FILTERS.map(([k, v]) => <button class="chip" type="button" data-f={k} aria-pressed={k === 'all' ? 'true' : 'false'}>{v}</button>)}
+        </div>
+      </div>
+      <div class="grid" id="lib">
+        {items.map((p, i) => <PromptCard p={p} eager={false} />)}
+      </div>
+      <p class="empty" id="none" hidden>No prompts match that search. Try a different word or clear the filter.</p>
+    </div>
+  </section>
+
+  <section class="sec w">
+    <div class="wrap longform">
+      <h2>What are ChatGPT AI photo editing prompts?</h2>
+      <p>ChatGPT AI photo editing prompts are short written instructions that you paste into ChatGPT together with a photo you upload. A strong ChatGPT prompt for photo editing names the change you want, such as the lighting, the background, the style or the crop, and then names what must stay the same: usually the face, the pose and the clothes. That second half is the part most people forget, and it is the difference between a polished edit and a result that no longer looks like you.</p>
+      <p>promptbin collects tested ChatGPT photo editing prompts in one place, so you do not have to dig through screenshots, captions and comment threads. Every card has a Copy Prompt button, and the free <a href="/ai-photo-prompt-tool/">prompt tool</a> lets you generate, modify, edit and correct your own wording.</p>
+
+      <h2>ChatGPT photo editing prompts trending Instagram creators keep reusing</h2>
+      <p>Looks spread on Instagram because they are easy to describe: a golden hour glow, a 90s disposable camera flash, a hand-painted film frame or a glossy collectible figure. The ChatGPT photo editing prompts trending Instagram feeds rely on almost always share four parts: a look, one lighting idea, a crop for the platform and an identity lock. Use the Trending Instagram chip above, copy one, and adjust the details for your own photo. Our guide on <a href="/blog/trending-instagram-chatgpt-photo-editing-prompts/">how trending Instagram prompts work</a> explains the pattern in detail.</p>
+
+      <h2>Couple prompt ChatGPT can follow without changing faces</h2>
+      <p>A good couple prompt ChatGPT can follow names both people, describes one shared scene and repeats the identity lock for each face. That is why every couple prompt ChatGPT users copy from this site ends with a line like "keep both faces, outfits and poses unchanged". Try the neon street, sunset beach or festive lights prompts, then read the full <a href="/blog/chatgpt-couple-photo-prompts/">couple prompt guide</a> for more scene ideas.</p>
+
+      <h2>ChatGPT photo editing prompts text: add words without hiding faces</h2>
+      <p>Words on photos are one of the most requested edits. ChatGPT photo editing prompts text works best when you give the exact wording, a lettering style and a position. For example: headline in bold sans-serif at the top, small subtitle at the bottom, face never covered. Keep phrases short and check every letter, because long sentences are where spelling mistakes appear. Start with the magazine cover, quote overlay and birthday card prompts, which already use ChatGPT photo editing prompts text blocks you can edit in seconds.</p>
+
+      <h2>Prompt seen ChatGPT users share online? Find it and rebuild it</h2>
+      <p>Many visitors arrive after searching for a prompt seen ChatGPT creators mention in a Reel, a Story or a comment. Captions often cut the prompt off, or the creator only shows the result. The fastest fix is to search the library by style, copy the closest match, and then use the <a href="/ai-photo-prompt-tool/#fix">corrector</a> and <a href="/ai-photo-prompt-tool/#mod">modifier</a> to rebuild the missing pieces. If the prompt seen ChatGPT edit used a trending look, the Trending Instagram filter is the quickest place to start. For a full walkthrough, read <a href="/blog/prompt-seen-chatgpt-how-to-find-and-rebuild-it/">how to find and rebuild a prompt seen ChatGPT creators use</a>.</p>
+    </div>
+  </section>
+
+  <section class="sec w">
+    <div class="wrap longform">
+      <h2>ChatGPT AI photo editing prompts explained</h2>
+      <p class="intro">Seven terms people search for, defined in plain words.</p>
+      <dl class="terms">
+        <dt>ChatGPT AI photo editing prompts</dt>
+        <dd>ChatGPT AI photo editing prompts are the written instructions that tell ChatGPT how to edit a photo you upload. Strong ChatGPT AI photo editing prompts name the change, the style and what must stay the same, and our ChatGPT AI photo editing prompts library covers every common edit.</dd>
+        <dt>ChatGPT photo editing prompts</dt>
+        <dd>ChatGPT photo editing prompts are the copy-ready versions of those instructions. Every one of our ChatGPT photo editing prompts has a Copy Prompt button, a face-safety line and a note on the crop, so ChatGPT photo editing prompts work the first time you paste them.</dd>
+        <dt>ChatGPT photo editing prompts trending Instagram</dt>
+        <dd>ChatGPT photo editing prompts trending Instagram are the looks that spread in Reels and Stories, such as retro flash and golden hour. We rewrite the ChatGPT photo editing prompts trending Instagram creators reuse so each one is complete, and we update ChatGPT photo editing prompts trending Instagram whenever a new look appears.</dd>
+        <dt>ChatGPT prompt for photo editing</dt>
+        <dd>A ChatGPT prompt for photo editing is one instruction for one edit. Write every ChatGPT prompt for photo editing with six parts: action, subject, style, light, identity lock and crop. A short ChatGPT prompt for photo editing beats a long, confused one.</dd>
+        <dt>Prompt seen ChatGPT</dt>
+        <dd>A prompt seen ChatGPT creators mention online is usually incomplete. Search the library for the closest match, then rebuild the prompt seen ChatGPT users shared with the corrector and modifier. A rebuilt prompt seen ChatGPT edit works as well as the original.</dd>
+        <dt>ChatGPT photo editing prompts text</dt>
+        <dd>ChatGPT photo editing prompts text add headlines, quotes and names to a photo. Short phrases make ChatGPT photo editing prompts text far more accurate, and a clear position keeps faces visible in every ChatGPT photo editing prompts text edit.</dd>
+        <dt>Couple prompt ChatGPT</dt>
+        <dd>A couple prompt ChatGPT can follow locks both faces and describes one shared scene. Pick a couple prompt ChatGPT scene for beaches, rainy streets or festive lights, and repeat the identity lock in every couple prompt ChatGPT you write.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <h2>Which ChatGPT photo editing prompts should you use?</h2>
+      <p class="intro">Match your goal to the right type of prompt.</p>
+      <ul class="match">
+        <li><b>Instagram feed post:</b> start with ChatGPT photo editing prompts trending Instagram creators use, cropped to 4:5.</li>
+        <li><b>Reel or Story cover:</b> use ChatGPT photo editing prompts trending Instagram looks with a 9:16 crop.</li>
+        <li><b>Anniversary photo:</b> copy a couple prompt ChatGPT scene such as the sunset beach.</li>
+        <li><b>Wedding or save-the-date card:</b> combine a couple prompt ChatGPT scene with ChatGPT photo editing prompts text.</li>
+        <li><b>Birthday card:</b> use ChatGPT photo editing prompts text with a rounded lettering style.</li>
+        <li><b>Quote post:</b> ChatGPT photo editing prompts text in handwriting, placed in the lower third.</li>
+        <li><b>LinkedIn headshot:</b> a ChatGPT prompt for photo editing with soft front light and a neutral background.</li>
+        <li><b>Product or cafe shot:</b> a ChatGPT prompt for photo editing that replaces only the background.</li>
+        <li><b>Photo with strangers:</b> a ChatGPT prompt for photo editing that removes crowds and clutter.</li>
+        <li><b>Half-remembered edit:</b> search for the prompt seen ChatGPT creators shared, then fix it in the corrector.</li>
+        <li><b>A Reel with no caption:</b> rebuild the prompt seen ChatGPT users describe in the comments.</li>
+        <li><b>First time:</b> read our ChatGPT AI photo editing prompts for beginners guide.</li>
+        <li><b>Quick scan on your phone:</b> swipe our ChatGPT photo editing prompts web stories.</li>
+        <li><b>Your own wording:</b> build ChatGPT AI photo editing prompts in the free prompt tool.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec w">
+    <div class="wrap longform">
+      <h2>Mistakes that ruin ChatGPT AI photo editing prompts</h2>
+      <p>Most failed edits come from the same few mistakes, and each one is easy to fix. Skipping the identity lock is the biggest: without it, ChatGPT AI photo editing prompts let the model redraw faces. Mixing three styles in one ChatGPT prompt for photo editing is the second, because the result blurs.</p>
+      <p>Long text is the third. ChatGPT photo editing prompts text with a full sentence often returns a misspelled word, so keep ChatGPT photo editing prompts text under eight words. For a couple prompt ChatGPT must name both people, not just "my face". When you copy ChatGPT photo editing prompts trending Instagram creators posted, read every line, because a prompt seen ChatGPT users shared may include a style you do not want.</p>
+      <p>Finally, change one detail per attempt. Whether you use ChatGPT AI photo editing prompts for portraits, a couple prompt ChatGPT scene or ChatGPT photo editing prompts text, small edits teach you what each line does.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <h2>Explore ChatGPT AI photo editing prompts by category</h2>
+      <p class="intro">Pick the kind of edit you want and jump straight to the guide and matching prompts.</p>
+      <div class="cols2">
+        <a class="card" href="/blog/trending-instagram-chatgpt-photo-editing-prompts/" style="text-decoration:none;color:inherit"><h3>Trending Instagram looks</h3><p>Copy the ChatGPT photo editing prompts trending Instagram feeds love, from retro flash to collectible figures.</p></a>
+        <a class="card" href="/blog/chatgpt-couple-photo-prompts/" style="text-decoration:none;color:inherit"><h3>Couples</h3><p>Use a couple prompt ChatGPT can follow for beaches, city nights and festive lights.</p></a>
+        <a class="card" href="/blog/chatgpt-photo-editing-prompts-text/" style="text-decoration:none;color:inherit"><h3>Text on photos</h3><p>ChatGPT photo editing prompts text templates for covers, quotes and birthday cards.</p></a>
+        <a class="card" href="/blog/chatgpt-prompt-for-photo-editing-formula/" style="text-decoration:none;color:inherit"><h3>Portraits and backgrounds</h3><p>Every ChatGPT prompt for photo editing here protects faces while it changes the light or scene.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec w">
+    <div class="wrap">
+      <h2>How to use a ChatGPT prompt for photo editing</h2>
+      <p class="intro">Three steps, no sign-up on this site.</p>
+      <ol class="steps">
+        <li><h3>Copy a prompt</h3><p>Pick a look in the library and tap Copy Prompt.</p></li>
+        <li><h3>Upload your photo</h3><p>Open ChatGPT, attach your picture and paste the prompt. Change any placeholder text first.</p></li>
+        <li><h3>Refine one thing</h3><p>If it is close, ask for one small change. Use the prompt tool to adjust the wording.</p></li>
+      </ol>
+      <p style="margin-top:1.2rem">Every ChatGPT prompt for photo editing here follows these steps. Use a ChatGPT prompt for photo editing as a template, edit one line, and save the version you like. A rebuilt prompt seen ChatGPT users shared and a copied ChatGPT prompt for photo editing both improve after two or three small changes. If a ChatGPT prompt for photo editing gives a stiff result, soften the light. If a prompt seen ChatGPT creators posted changes your face, add the identity lock. These ChatGPT photo editing prompts trending Instagram creators love also work for your own feed, and ChatGPT photo editing prompts trending Instagram looks need only a new crop.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap two">
+      <div>
+        <h2>One tool to write, fix and improve your prompts</h2>
+        <p>The free prompt tool combines a prompt generator, modifier, editor and corrector. It runs in your browser, so your text stays on your device.</p>
+        <p style="margin-top:1.2rem"><a class="btn" href="/ai-photo-prompt-tool/">Try the prompt tool</a></p>
+      </div>
+      <div class="pbox"><p><strong>Corrector example</strong></p><p>Before: edit my photoo wiht cinamatic ligting, dont change face</p><p>After: Edit my photo with cinematic lighting, don't change face.</p></div>
+    </div>
+  </section>
+
+  <section class="sec w">
+    <div class="wrap">
+      <h2>Popular ChatGPT photo editing prompts searches</h2>
+      <p class="intro">Jump straight to what people look for most.</p>
+      <ul class="cols2" style="list-style:none;padding:0">
+        <li class="card"><h3><a href="/blog/trending-instagram-chatgpt-photo-editing-prompts/">ChatGPT photo editing prompts trending Instagram</a></h3><p>Retro flash, golden hour, collectible figures and more ChatGPT photo editing prompts trending Instagram feeds repeat.</p></li>
+        <li class="card"><h3><a href="/blog/chatgpt-couple-photo-prompts/">Couple prompt ChatGPT</a></h3><p>Every couple prompt ChatGPT scene keeps two faces consistent. Try beach, neon street and festive lights.</p></li>
+        <li class="card"><h3><a href="/blog/chatgpt-photo-editing-prompts-text/">ChatGPT photo editing prompts text</a></h3><p>Add a headline, quote or name with ChatGPT photo editing prompts text that never covers faces.</p></li>
+        <li class="card"><h3><a href="/blog/chatgpt-prompt-for-photo-editing-formula/">ChatGPT prompt for photo editing</a></h3><p>The six-part formula behind a reliable ChatGPT prompt for photo editing, with templates.</p></li>
+        <li class="card"><h3><a href="/blog/prompt-seen-chatgpt-how-to-find-and-rebuild-it/">Prompt seen ChatGPT</a></h3><p>Rebuild a prompt seen ChatGPT creators shared when the caption is cut off.</p></li>
+        <li class="card"><h3><a href="/blog/chatgpt-ai-photo-editing-prompts-for-beginners/">ChatGPT AI photo editing prompts for beginners</a></h3><p>Start with simple ChatGPT AI photo editing prompts and change one detail at a time.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  {stories.length > 0 && (
+    <section class="sec">
+      <div class="wrap">
+        <h2>ChatGPT photo editing prompts web stories</h2>
+        <p class="intro">Swipe through ChatGPT AI photo editing prompts one slide at a time: trending Instagram looks, a couple prompt ChatGPT can follow and text on photos.</p>
+        <ul class="stories">
+          {stories.map((s) => (
+            <li><a class="story" href={`/web-stories/${s.id}/`}><img src={coverSrc(s.cover)} width="320" height="427" alt={`ChatGPT AI photo editing prompts web story cover: ${s.title}`} loading="lazy" decoding="async" /><span class="story-b"><b>{s.title}</b><small>{s.slides.length} slides</small></span></a></li>
+          ))}
+        </ul>
+        <p style="margin-top:1rem"><a href="/web-stories/">All web stories</a></p>
+      </div>
+    </section>
+  )}
+
+  <section class="sec w">
+    <div class="wrap">
+      <h2>Latest guides</h2>
+      <p class="intro">Tips for getting cleaner results from ChatGPT photo edits.</p>
+      <div class="posts">
+        {posts.map((p) => (
+          <article class="post"><span class="meta">Guide</span><h3><a href={`/blog/${p.id}/`}>{p.data.title}</a></h3><p>{p.data.description}</p></article>
+        ))}
+      </div>
+      <p style="margin-top:1rem"><a href="/blog/">All guides</a></p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap" style="max-width:820px">
+      <h2>Frequently asked questions</h2>
+      {HOME_FAQ.map(([q, a]) => <details><summary>{q}</summary><p>{a}</p></details>)}
+      <p style="margin-top:1rem"><a href="/faq/">See all questions</a></p>
+    </div>
+  </section>
+
+  <script>import '../scripts/home.js';</script>
+</Base>

@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import FilmStrip from '../components/FilmStrip.astro';
+---
+<Base title="Page not found (404) | promptbin" description="Page not found." noindex>
+  <section class="hero2" data-tone="dusk" style="text-align:center">
+    <FilmStrip />
+    <div class="wrap err" style="padding-block:clamp(3rem,10vw,6rem)">
+      <div class="code">404</div>
+      <h1 style="font-size:clamp(1.6rem,4vw,2.4rem);margin-inline:auto;max-width:none">We can&rsquo;t find that page</h1>
+      <p class="sub" style="margin-inline:auto">The link may be broken or the page may have moved. Try the home page, the prompt tool or the blog.</p>
+      <div class="acts" style="justify-content:center"><a class="btn" href="/">Go to home</a><a class="btn alt" href="/ai-photo-prompt-tool/">Open prompt tool</a><a class="btn alt" href="/blog/">Read the blog</a></div>
+    </div>
+  </section>
+</Base>

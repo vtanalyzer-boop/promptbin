@@ -1,0 +1,69 @@
+---
+import Legal from '../layouts/Legal.astro';
+import { SITE } from '../data/site.js';
+const site = Astro.site.origin;
+---
+<Legal title="Privacy policy" seoTitle="Privacy Policy | promptbin ChatGPT Photo Prompts" description="How promptbin handles data, cookies and third-party services when you copy ChatGPT AI photo editing prompts, use the prompt tool or read our web stories.">
+  <h2>Summary in plain words</h2>
+  <p>{SITE.name} ("we", "us") is a free website at {site} that offers copy-ready ChatGPT AI photo editing prompts. This policy explains what information is handled when you visit. The short version is below, and the sections after it give the details.</p>
+  <ul>
+    <li>You do not need an account, and you cannot upload anything to the site.</li>
+    <li>The site currently has no advertising, no analytics or tracking scripts and no social media pixels.</li>
+    <li>The only personal information we receive is what you choose to send through the contact form or by email.</li>
+    <li>A few small settings are saved in your own browser, such as light or dark mode.</li>
+    <li>If you pick another language, the page text is sent to Google to be translated. Choosing English stops this.</li>
+    <li>You can ask us to delete your messages at any time.</li>
+  </ul>
+  <h2>What we collect</h2>
+  <h3>Information you give us</h3>
+  <p>If you use the contact form, we receive your name, email address and message so we can reply. If you email <a href={`mailto:${SITE.email}`}>{SITE.email}</a> instead, we receive your email address and whatever you write. We use messages only to reply, to review prompt suggestions or to fix problems. We do not sell this information or use it for marketing.</p>
+  <h3>Technical data</h3>
+  <p>The site runs on Cloudflare Workers. To deliver and protect the site, Cloudflare may process technical request data such as your IP address and browser type. This is normal for any website and happens in the background.</p>
+  <h3>What we do not collect</h3>
+  <p>We do not ask you to register. We do not collect photos, because visitors upload nothing. We do not run analytics, advertising or social media tracking. The site has no public comments or other user-generated content. The Copy Prompt buttons copy text to your clipboard on your own device, and nothing is sent to us when you press them.</p>
+  <h2>Prompt tool</h2>
+  <p>The <a href="/ai-photo-prompt-tool/">prompt tool</a> runs in your browser. Text you type there stays in your browser and is not uploaded to our servers. If you save favourite prompts, they are kept in your browser's own storage. You can remove them in the tool or by clearing your browser data.</p>
+  <h2>Cookies and browser storage</h2>
+  <p>Here is everything the site stores on your device.</p>
+  <ul>
+    <li><strong>Colour theme (pb_theme):</strong> your light or dark choice is saved in your browser's local storage so the site looks the same next time. It stays on your device.</li>
+    <li><strong>Favourite prompts:</strong> the prompt tool can save favourites in your browser storage. They never leave your device.</li>
+    <li><strong>Language cookie (googtrans):</strong> choosing a language other than English sets this cookie, and loads Google Website Translator, which may set its own Google cookies.</li>
+    <li><strong>Admin session cookie:</strong> one password-protected, HttpOnly session cookie is set only for the site admin after logging in. Visitors never receive it.</li>
+  </ul>
+  <p>You can delete any of these in your browser settings. The site still works without them.</p>
+  <h2>Language selection</h2>
+  <p>The language menu uses Google Website Translator. It loads only after you choose a language other than English. When you do, the text of the page you are viewing is sent to Google to be translated, and Google may set cookies. Choose English to stop this. We do not control what Google does with that data, so please read Google's privacy policy if you want the details.</p>
+  <p>If you would rather not involve Google at all, keep the site in English or use your browser's own translation feature instead.</p>
+  <h2>Contact form</h2>
+  <p>When you send the form, your name, email address and message go to a third-party form-processing service called Formspree. Formspree passes the message on to the promptbin inbox. That service has its own privacy policy. If you prefer, you can skip the form and email us directly at <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+  <h2>Hosting and security</h2>
+  <p>Prompts, web stories and the images uploaded by the site admin are stored in a Cloudflare D1 database. Visitors have no accounts, so there are no visitor passwords to protect. Here is what we do to keep the site safe, in plain terms.</p>
+  <ul>
+    <li><strong>HTTPS:</strong> the connection between your browser and the site is encrypted.</li>
+    <li><strong>Content security rules (CSP):</strong> the site tells your browser which sources it may load content from, which limits the damage if something goes wrong.</li>
+    <li><strong>Rate limiting:</strong> the admin console is for the site owner only. Failed admin login attempts are counted per IP address for a short time so that password guessing is blocked.</li>
+  </ul>
+  <p>No system is perfectly secure, so we cannot promise absolute protection. We keep the amount of personal data we hold small, which is the best protection we can offer.</p>
+  <h2>How long we keep information</h2>
+  <p>We keep contact messages only as long as we need them to reply, review a suggestion or fix a problem. Then we delete them or leave them in the inbox until you ask us to remove them. We do not keep a fixed schedule, so if you want a message deleted sooner, just ask. Settings stored in your browser stay there until you clear them. Cloudflare keeps technical request data under its own policies.</p>
+  <h2>Third parties</h2>
+  <p>The services that may handle information when you use the site are:</p>
+  <ul>
+    <li><strong>Cloudflare:</strong> hosting, delivery, protection and the D1 database.</li>
+    <li><strong>Formspree:</strong> processes contact form messages.</li>
+    <li><strong>Google Website Translator:</strong> only if you choose a language other than English.</li>
+  </ul>
+  <p>Our pages may also link to other sites, including OpenAI. We are not responsible for their privacy practices. {SITE.name} is an independent site and is not affiliated with OpenAI.</p>
+  <h2>Your choices and rights</h2>
+  <p>Depending on where you live, you may have rights to access, correct or delete your personal data. We will honour reasonable requests wherever you live. To make a request, email <a href={`mailto:${SITE.email}`}>{SITE.email}</a>, tell us what you would like and write from the address you used before. We aim to reply within a few days. We may ask for a little detail to confirm that the request comes from you.</p>
+  <p>You can also clear your browser storage, delete cookies, or pick English to stop translation at any time.</p>
+  <h2>Children</h2>
+  <p>This site is not directed at children under 13 and we do not knowingly collect their data. If you believe a child has sent us personal information, email us and we will delete it.</p>
+  <h2>International processing</h2>
+  <p>Cloudflare, Formspree and Google run services in many countries. This means information such as your IP address or a contact message may be processed outside the country where you live. The site is run from India, and these terms are governed by the laws of India. By using the site you understand that data may move across borders in this way.</p>
+  <h2>Changes to this policy</h2>
+  <p>We may update this policy. The date at the top shows the latest revision. If we ever add advertising or analytics to the site, we will update this policy and change the date before those tools go live.</p>
+  <h2>Contact</h2>
+  <p>Questions about privacy? Email <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. You can also read our <a href="/terms-and-conditions/">terms and conditions</a>, the <a href="/disclaimer/">disclaimer</a> or the <a href="/contact/">contact page</a>.</p>
+</Legal>

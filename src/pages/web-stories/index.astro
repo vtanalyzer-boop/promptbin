@@ -1,0 +1,96 @@
+---
+// Public Web Stories hub. Reads D1 at request time so new stories from /admin/stories/ appear immediately.
+export const prerender = false;
+import Base from '../../layouts/Base.astro';
+import FaqList from '../../components/FaqList.astro';
+import { STORIES_FAQ } from '../../data/extra-faq.js';
+import KeyPoints from '../../components/KeyPoints.astro';
+import { KEY_POINTS } from '../../data/extra-faq.js';
+import Answer from '../../components/Answer.astro';
+import PageHead from '../../components/PageHead.astro';
+import { listStories, coverSrc } from '../../lib/stories.js';
+import { SITE } from '../../data/site.js';
+
+Astro.response.headers.set('Cache-Control', 'public, max-age=60, s-maxage=120, stale-while-revalidate=300');
+const stories = await listStories({ publishedOnly: true });
+const fmt = (iso) => new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'ChatGPT photo editing prompts Web Stories', url: new URL('/web-stories/', Astro.site).href,
+    isPartOf: { '@type': 'WebSite', name: SITE.name, url: Astro.site.href },
+    mainEntity: { '@type': 'ItemList', itemListElement: stories.map((s, i) => ({ '@type': 'ListItem', position: i + 1, url: new URL(`/web-stories/${s.id}/`, Astro.site).href, name: s.title })) } },
+];
+---
+<Base
+  title="ChatGPT Photo Editing Prompts Web Stories | promptbin"
+  description="Swipe through short web stories of ChatGPT AI photo editing prompts: trending Instagram looks, couple prompt ChatGPT scenes and text on photos."
+  keywords="chatgpt photo editing prompts web stories, chatgpt ai photo editing prompts, chatgpt photo editing prompts trending instagram, couple prompt chatgpt, chatgpt photo editing prompts text, chatgpt prompt for photo editing, prompt seen chatgpt"
+  schema={schema}
+>
+  <PageHead tone="dusk" title="ChatGPT photo editing prompts web stories" sub="Full-screen, swipe-through stories you can read in under a minute. Each one shows a set of ChatGPT AI photo editing prompts and how to use them." crumbs={[[null, 'Web Stories']]} />
+  <section class="sec">
+    <div class="wrap">
+      <Answer text="ChatGPT photo editing prompts web stories are short swipe-through slides that show a set of ChatGPT AI photo editing prompts in under a minute. Each story ends with a link to the full guide and the prompts to copy." />
+      {stories.length === 0
+        ? <p class="empty">No web stories have been published yet. Check back soon, or browse the <a href="/">ChatGPT photo editing prompts</a> library.</p>
+        : (
+          <ul class="stories">
+            {stories.map((s) => (
+              <li>
+                <a class="story" href={`/web-stories/${s.id}/`}>
+                  <img src={coverSrc(s.cover)} width="320" height="427" alt={`ChatGPT AI photo editing prompts web story cover: ${s.title}`} loading="lazy" decoding="async" />
+                  <span class="story-b"><b>{s.title}</b><small>{s.slides.length} slides &middot; {fmt(s.createdAt)}</small></span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
+    </div>
+  </section>
+  <section class="sec w">
+    <div class="wrap longform">
+      <h2>What are ChatGPT photo editing prompts web stories?</h2>
+      <p>Web stories are short, tap-through slides, similar to Instagram Stories, that open in your browser and can appear in Google Search and Discover. Our ChatGPT photo editing prompts web stories turn one idea into five or six slides: a look, the exact ChatGPT prompt for photo editing and one tip to keep faces unchanged. They are the fastest way to scan ChatGPT AI photo editing prompts on your phone.</p>
+      <h2>Topics we cover</h2>
+      <p>Expect ChatGPT photo editing prompts trending Instagram creators reuse, each couple prompt ChatGPT can follow without changing faces, and ChatGPT photo editing prompts text templates for covers, quotes and cards. If you spotted a prompt seen ChatGPT users share and want to rebuild it, start with a story and then open the <a href="/ai-photo-prompt-tool/">prompt tool</a>.</p>
+      <h2>How to pick a story</h2>
+      <p>Want ChatGPT photo editing prompts trending Instagram creators reuse? Open the trending story. Planning a couple prompt ChatGPT can follow for two faces? Open the couple story. Need ChatGPT photo editing prompts text for a cover, quote or card? Open the text story. Each story links to a full guide with the exact ChatGPT prompt for photo editing.</p>
+      <p>Spotted a prompt seen ChatGPT users shared and want to rebuild it? Read the story, then fix the missing words with the corrector. Every story uses simple ChatGPT AI photo editing prompts, so you can copy, paste and edit one detail at a time. Our ChatGPT photo editing prompts web stories are free, fast and need no sign-up.</p>
+      <p>Prefer reading? Browse the <a href="/blog/">blog guides</a> or copy any prompt from the <a href="/">main library</a>. Questions or story ideas? Email <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+    </div>
+  </section>
+  <section class="sec">
+    <div class="wrap longform">
+      <h2>How to get the most out of a web story</h2>
+      <p>A web story is the quickest way to preview a look before you commit to it. You tap through five or six slides, and each slide shows one idea: a style, the light it relies on, and the one thing that keeps your face from changing. If a slide looks like what you had in mind, open the matching card in the <a href="/">prompt library</a>, tap Copy Prompt and paste it into ChatGPT with your photo.</p>
+      <p>Most people skim a story once and then go straight to the library. That works, but a second pass pays off. Read the slide text again and notice the words that carry the look: "direct flash", "soft rim light", "faded colors", "white border". Those few words are what you will want to keep when you adapt a prompt to your own picture. Everything else in a prompt is scaffolding.</p>
+      <h3>Reading a story on your phone</h3>
+      <p>Tap the right side of the screen to move forward and the left side to go back. Hold your finger on a slide to pause it, which helps when you want to read a longer line. The last slide has a button that opens the full guide, so you never have to hunt for the source.</p>
+      <h3>Reading a story on a desktop</h3>
+      <p>Stories work on a laptop too. Click or use the arrow keys to move between slides. If you prefer reading to swiping, the guides linked from each story cover the same ground in more detail, with example prompts you can copy straight from the page.</p>
+
+      <h2>What makes a good ChatGPT photo editing prompts story</h2>
+      <p>Stories on promptbin follow a few simple rules, and they are worth knowing if you ever write your own. One idea per slide. A headline of a few words, then one or two lines of explanation. No slide that asks you to read a paragraph while a timer ticks. And always a reason to trust the advice: either an example prompt or a concrete tip, never a vague claim.</p>
+      <ul>
+        <li><strong>The first slide names the topic.</strong> If you cannot tell what the story is about from slide one, you are less likely to reach slide two.</li>
+        <li><strong>Each middle slide covers one look.</strong> Golden hour, retro flash, a collage of instant-film frames. One look, one slide.</li>
+        <li><strong>The last slide points somewhere useful.</strong> Usually that is the matching guide or the prompt library, not a generic home page.</li>
+      </ul>
+      <p>The same discipline makes a better prompt. If you can describe your edit in the length of a single slide, the prompt you paste into ChatGPT will usually be clearer for it.</p>
+
+      <h2>Stories, guides and the library: which one to use</h2>
+      <p>The three formats answer different questions. Use a story when you want ideas fast and are not sure what look you want. Use a blog guide when you want to understand why a prompt works, or you are stuck and need troubleshooting. Use the library when you already know the look and just want the text to copy.</p>
+      <p>If you saw a prompt seen ChatGPT creators mention in a Reel and cannot remember all of it, a story can help you name the look, and the <a href="/blog/prompt-seen-chatgpt-how-to-find-and-rebuild-it/">rebuild guide</a> shows you how to fill the gaps. If you only need to add words to a photo, the text story and the <a href="/blog/chatgpt-photo-editing-prompts-text/">text guide</a> cover that one job in detail.</p>
+
+      <h2>Why we publish stories at all</h2>
+      <p>Photo prompts are visual by nature, and a block of text in a blog post does not always convey the feel of a look. A story lets us pair a short explanation with an image and keep it in a format people already know how to use. It also loads quickly, because there is nothing to scroll and nothing to read that you did not choose to read.</p>
+      <p>Stories are also a good fit for how people discover prompts. Many readers arrive from a phone after seeing a look on social media. A story meets them in the same format, so there is less friction between "I like that" and "I know what to paste."</p>
+      <p>One honest note: the example images on promptbin are illustrations that show the style of each prompt, not before-and-after photos of real people. Your own result will depend on your photo, the version of ChatGPT you use and how closely you follow the prompt. Treat every story as a starting point.</p>
+
+      <h2>Suggest a story or report a problem</h2>
+      <p>If there is a look you would like to see covered, or a slide that was confusing, write to <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. Useful suggestions say what the look is, where you saw it and what you would like the story to answer. We read every message, although replies can take a few days. You can also use the <a href="/contact/">contact page</a> if you prefer a form.</p>
+    </div>
+  </section>
+
+  <KeyPoints title="Key points: ChatGPT AI photo editing prompts stories" items={KEY_POINTS.stories} />
+  <FaqList title="ChatGPT AI photo editing prompts web stories: common questions" items={STORIES_FAQ} />
+</Base>

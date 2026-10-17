@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import KeyPoints from '../components/KeyPoints.astro';
+import { KEY_POINTS } from '../data/extra-faq.js';
+import Answer from '../components/Answer.astro';
+import PageHead from '../components/PageHead.astro';
+import { FAQ, faqSchema } from '../data/faq.js';
+---
+<Base title="ChatGPT Photo Editing Prompts FAQ | promptbin"
+  description="Answers about ChatGPT AI photo editing prompts: how to use them, couple prompts, adding text, keeping faces unchanged, trending Instagram looks and more."
+  schema={[faqSchema()]}>
+  <PageHead tone="teal" title="Frequently asked questions" sub="Quick answers about ChatGPT photo editing prompts, couple prompts, text edits and Instagram looks." crumbs={[[null, 'FAQ']]} />
+  <section class="sec"><div class="wrap" style="max-width:820px">
+    <Answer text="ChatGPT AI photo editing prompts are written instructions that tell ChatGPT what to change in your photo and what to keep. These answers explain how to use them, how to write a couple prompt ChatGPT follows, how to add text and which looks trend on Instagram." />
+    <p class="intro">New to ChatGPT AI photo editing prompts? These answers cover the questions we hear most. Every answer applies to all of our ChatGPT photo editing prompts. Looking for ChatGPT photo editing prompts trending Instagram creators use, or ChatGPT photo editing prompts text for covers and cards? Both are covered below, along with ChatGPT photo editing prompts text safety tips and ChatGPT photo editing prompts trending Instagram do's and don'ts. If yours is missing, <a href="/contact/">send it to us</a>.</p>
+    {FAQ.map(([q, a]) => <details><summary>{q}</summary><p>{a}</p></details>)}
+  </div></section>
+  <KeyPoints title="Key points about ChatGPT AI photo editing prompts" items={KEY_POINTS.faq} />
+</Base>
