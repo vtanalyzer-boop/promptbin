@@ -8,7 +8,7 @@
       "binding": "DB",
       "database_name": "promptbin-db",
       // Replace with the id printed by: npx wrangler d1 create promptbin-db
-      "database_id": "REPLACE_WITH_YOUR_D1_DATABASE_ID",
+      "database_id": "cf6d132a-805a-4d1e-956e-dadd42397048",
       "migrations_dir": "migrations"
     }
   ]
