@@ -3,8 +3,22 @@ import { env as cfEnv } from 'cloudflare:workers';
 
 export const env = (k, d) => cfEnv[k] ?? d;
 export const db = () => {
-  if (!cfEnv.DB) throw new Error('D1 binding "DB" is missing. Check wrangler.jsonc.');
-  return cfEnv.DB;
+  // Support DB binding, or fallback names if misnamed in Cloudflare Dashboard
+  const d1 = cfEnv.DB || cfEnv.DATABASE || cfEnv['promptbin-db'] || cfEnv.promptbin_db || cfEnv.d1;
+
+  if (!d1) {
+    throw new Error(
+      'D1 binding "DB" is missing. In Cloudflare Dashboard, go to Settings > Bindings (or Functions > D1 Database Bindings) and add a D1 database binding with variable name "DB".'
+    );
+  }
+
+  if (typeof d1 === 'string' || typeof d1.prepare !== 'function') {
+    throw new Error(
+      `D1 binding "DB" was added as a plain text Environment Variable ("${d1}") instead of a D1 Database Binding. In Cloudflare Dashboard, remove "DB" / "database_id" from Environment Variables and add it under D1 Database Bindings.`
+    );
+  }
+
+  return d1;
 };
 
 export const nowIso = () => new Date().toISOString();

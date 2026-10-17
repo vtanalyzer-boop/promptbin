@@ -6,6 +6,9 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "deploy": "astro build && wrangler deploy",
+    "d1:migrate": "wrangler d1 migrations apply promptbin-db --remote",
+    "d1:migrate:local": "wrangler d1 migrations apply promptbin-db --local",
     "start": "node ./dist/server/entry.mjs",
     "preview": "astro preview",
     "seo:keywords": "node scripts/keyword-report.mjs",
