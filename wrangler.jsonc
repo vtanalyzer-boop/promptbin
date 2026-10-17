@@ -9,7 +9,7 @@
   // Pointing it at your existing namespace stops wrangler from trying to create a new one.
   "kv_namespaces": [
     {
-      "binding": "promptbin",
+      "binding": "SESSION",
       "id": "c0cb5b717f5a45b4b78c7693147398ed"
     }
   ],
