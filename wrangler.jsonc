@@ -10,7 +10,15 @@
       // Replace with the id printed by: npx wrangler d1 create promptbin-db
       "database_id": "cf6d132a-805a-4d1e-956e-dadd42397048",
       "migrations_dir": "migrations"
+    },
+    {
+  "kv_namespaces": [
+    {
+      "binding": "promptbin-session",
+      "id": "2679a999ba7344f9ba966873f4551665"
     }
+  ]
+}
   ]
   // Secrets (not stored here): ADMIN_PASSWORD, SESSION_SECRET
   //   npx wrangler secret put ADMIN_PASSWORD
