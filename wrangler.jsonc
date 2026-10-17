@@ -3,25 +3,26 @@
   "name": "promptbin",
   "compatibility_date": "2026-10-01",
   "compatibility_flags": ["nodejs_compat"],
+
+  // Astro's Cloudflare adapter always expects a KV binding named exactly "SESSION"
+  // (it printed: Enabling sessions with Cloudflare KV with the "SESSION" KV binding).
+  // Pointing it at your existing namespace stops wrangler from trying to create a new one.
+  "kv_namespaces": [
+    {
+      "binding": "promptbin",
+      "id": "c0cb5b717f5a45b4b78c7693147398ed"
+    }
+  ],
+
   "d1_databases": [
     {
       "binding": "DB",
       "database_name": "promptbin-db",
       // Replace with the id printed by: npx wrangler d1 create promptbin-db
+      // (or run `npx wrangler d1 list` if it already exists)
       "database_id": "cf6d132a-805a-4d1e-956e-dadd42397048",
       "migrations_dir": "migrations"
-    },
-    {
-    "kv_namespaces": [
-    {
-      "binding": "KV",
-      "id": "2679a999ba7344f9ba966873f4551665",
-      
-      // Optional: preview_id used when running `wrangler dev` for local dev
-      "preview_id": "<ID_OF_PREVIEW_KV_NAMESPACE_FOR_LOCAL_DEVELOPMENT>"
     }
-  ]
-}
   ]
   // Secrets (not stored here): ADMIN_PASSWORD, SESSION_SECRET
   //   npx wrangler secret put ADMIN_PASSWORD
