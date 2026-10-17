@@ -12,10 +12,13 @@
       "migrations_dir": "migrations"
     },
     {
-  "kv_namespaces": [
+    "kv_namespaces": [
     {
-      "binding": "promptbin-session",
-      "id": "2679a999ba7344f9ba966873f4551665"
+      "binding": "KV",
+      "id": "2679a999ba7344f9ba966873f4551665",
+      
+      // Optional: preview_id used when running `wrangler dev` for local dev
+      "preview_id": "<ID_OF_PREVIEW_KV_NAMESPACE_FOR_LOCAL_DEVELOPMENT>"
     }
   ]
 }
