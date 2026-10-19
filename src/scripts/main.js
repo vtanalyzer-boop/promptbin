@@ -5,7 +5,8 @@ document.addEventListener('click', (e) => {
   const b = e.target.closest('[data-copy]');
   if (!b) return;
   const box = b.closest('.print,.pbox');
-  const text = b.getAttribute('data-copy') || (box && $('.pt,p', box).textContent) || '';
+  const pt = box && $('.pt,p', box);
+  const text = b.getAttribute('data-copy') || (pt ? pt.textContent : '') || '';
   const label = b.getAttribute('data-label') || b.textContent;
   copy(text.trim()).then(() => {
     say('Prompt copied');

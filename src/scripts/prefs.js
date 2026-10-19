@@ -90,7 +90,9 @@ if (sel) {
 if (activeLang !== 'en') {
   document.addEventListener('click', (e) => {
     const a = e.target.closest && e.target.closest('a');
-    if (!a || !a.href || a.target === '_blank' || a.hasAttribute('download')) return;
+    if (!a || !a.href) return;
+    const rawHref = a.getAttribute('href');
+    if (!rawHref || rawHref.startsWith('#') || a.target === '_blank' || a.hasAttribute('download')) return;
     try {
       const u = new URL(a.href, location.origin);
       if (u.origin !== location.origin) return; // external link
