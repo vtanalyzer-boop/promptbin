@@ -2,7 +2,7 @@
 title: "Couple prompt ChatGPT guide: ideas for photos of two people"
 description: "Tips and copy-ready couple prompts that keep both faces recognizable, with scene ideas for romantic, playful and festive photos."
 pubDate: 2026-10-09
-seoTitle: "Couple Prompt ChatGPT: Photo Ideas for Two | promptbin"
+seoTitle: "Couple Prompt ChatGPT: Photo Ideas for Two | promptbeen"
 metaDescription: "A couple prompt ChatGPT can follow keeps both faces consistent. Get five rules and copy-ready scenes for beach, neon street and festive lights photos."
 answer: "A couple prompt ChatGPT can follow names both people, describes one shared scene and repeats the same identity lock for each face, such as: keep both faces, outfits and poses unchanged."
 ---

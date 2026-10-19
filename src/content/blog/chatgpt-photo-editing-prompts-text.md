@@ -2,7 +2,7 @@
 title: "ChatGPT photo editing prompts text: how to add words to photos"
 description: "Learn how to write ChatGPT photo editing prompts text that adds headlines, quotes and names to a photo without hiding faces or misspelling words."
 pubDate: 2026-10-08
-seoTitle: "ChatGPT Photo Editing Prompts Text: Add Words | promptbin"
+seoTitle: "ChatGPT Photo Editing Prompts Text | promptbeen"
 metaDescription: "Write ChatGPT photo editing prompts text that adds headlines, quotes and names to a photo without hiding faces or misspelling words. Examples included."
 answer: "ChatGPT photo editing prompts text add words to a photo. Give the exact wording, one lettering style and a position that avoids faces, then check every letter after the edit."
 ---

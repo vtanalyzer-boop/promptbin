@@ -8,13 +8,13 @@ import { KEY_POINTS } from '../../data/extra-faq.js';
 import Answer from '../../components/Answer.astro';
 import PageHead from '../../components/PageHead.astro';
 import { SITE } from '../../data/site.js';
-const schema = [{ '@context': 'https://schema.org', '@type': 'Blog', name: 'promptbin blog', url: new URL('/blog/', Astro.site).href, publisher: { '@type': 'Organization', name: 'promptbin' } }];
+const schema = [{ '@context': 'https://schema.org', '@type': 'Blog', name: 'promptbeen blog', url: new URL('/blog/', Astro.site).href, publisher: { '@type': 'Organization', name: SITE.name } }];
 const posts = (await getCollection('blog')).sort((a, b) => +b.data.pubDate - +a.data.pubDate);
 ---
-<Base schema={schema} title="ChatGPT Photo Editing Guides & Prompt Ideas | promptbin Blog"
+<Base schema={schema} title="ChatGPT Photo Editing Guides & Prompt Ideas | promptbeen Blog"
   description="Step-by-step guides on ChatGPT AI photo editing prompts: Instagram trends, couple photos, text edits and how to rebuild a prompt seen ChatGPT creators share.">
   <PageHead tone="sky" title="Blog" sub="Guides and prompt ideas for ChatGPT photo editing, from beginner steps to Instagram trends." crumbs={[[null, 'Blog']]} />
-  <section class="sec"><div class="wrap"><Answer text="The promptbin blog is a library of step-by-step guides on ChatGPT AI photo editing prompts: how to write them, how to find a prompt seen ChatGPT creators share, and how to use trending, couple and text prompts." /><p class="intro">Eight in-depth guides on ChatGPT AI photo editing prompts. Learn the formula behind every ChatGPT prompt for photo editing, find a prompt seen ChatGPT creators shared, see how ChatGPT photo editing prompts trending Instagram creators reuse are built, and copy a couple prompt ChatGPT can follow or ChatGPT photo editing prompts text templates.</p><p class="intro">Each guide links to ready-made ChatGPT photo editing prompts you can copy and test.</p><div class="posts">
+  <section class="sec"><div class="wrap"><Answer text="The promptbeen blog is a library of step-by-step guides on ChatGPT AI photo editing prompts: how to write them, how to find a prompt seen ChatGPT creators share, and how to use trending, couple and text prompts." /><p class="intro">Eight in-depth guides on ChatGPT AI photo editing prompts. Learn the formula behind every ChatGPT prompt for photo editing, find a prompt seen ChatGPT creators shared, see how ChatGPT photo editing prompts trending Instagram creators reuse are built, and copy a couple prompt ChatGPT can follow or ChatGPT photo editing prompts text templates.</p><p class="intro">Each guide links to ready-made ChatGPT photo editing prompts you can copy and test.</p><div class="posts">
     {posts.map((p) => (
       <article class="post">
         <time class="meta" datetime={p.data.pubDate.toISOString()}>{p.data.pubDate.toISOString().slice(0, 10)}</time>
@@ -50,7 +50,7 @@ const posts = (await getCollection('blog')).sort((a, b) => +b.data.pubDate - +a.
       <p>Every guide starts with a real question about ChatGPT's image editing. We write a plain draft, add example prompts, and then check each example against its own advice. A prompt in a guide should follow the rules the guide teaches. If it does not, we fix the prompt or the rule.</p>
       <p>After that comes a read-through for clarity. Can a first-time reader follow it without opening another tab? Is every term explained the first time it appears? Are the links useful rather than decorative? Guides that fail those questions go back for another pass. We add the date to each post so you can judge how current it is, and we update posts when ChatGPT's behavior changes in a way that affects the advice.</p>
 
-      <h2>Using the guides with the rest of promptbin</h2>
+      <h2>Using the guides with the rest of promptbeen</h2>
       <p>Each guide links to ready-made prompts in the <a href="/">library</a>, so you can read an idea and test it in the same session. If you want to experiment with your own wording, open the free <a href="/ai-photo-prompt-tool/">prompt tool</a>. It runs in your browser, so nothing you type is uploaded. And if you would rather skim than read, the <a href="/web-stories/">web stories</a> condense the main guides into a few slides each.</p>
       <p>Have a question the guides do not answer? Check the <a href="/faq/">FAQ</a> first, then write to <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. Good questions often become the next guide.</p>
     </div>

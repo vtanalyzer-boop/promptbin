@@ -2,7 +2,7 @@
 title: "ChatGPT AI photo editing prompts for beginners: a simple start"
 description: "A beginner guide to ChatGPT AI photo editing prompts: what to write, what to keep unchanged, and how to fix a result that is almost right."
 pubDate: 2026-10-12
-seoTitle: "ChatGPT AI Photo Editing Prompts for Beginners | promptbin"
+seoTitle: "ChatGPT Photo Editing Prompts for Beginners | promptbeen"
 metaDescription: "A beginner guide to ChatGPT AI photo editing prompts: what to write, what to keep unchanged, and how to fix a ChatGPT photo edit that is almost right."
 answer: "ChatGPT AI photo editing prompts are short instructions you paste into ChatGPT with a photo. Name the change, the style and what must stay the same, then ask for one small fix at a time."
 ---

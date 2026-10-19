@@ -2,7 +2,7 @@
 title: "Trending Instagram ChatGPT photo editing prompts and how they work"
 description: "Why certain looks keep spreading on Instagram, the four-part pattern behind them, and how to rebuild any look with your own photos."
 pubDate: 2026-10-10
-seoTitle: "ChatGPT Photo Editing Prompts Trending Instagram"
+seoTitle: "Trending Instagram ChatGPT Photo Prompts | promptbeen"
 metaDescription: "Why ChatGPT photo editing prompts trending Instagram looks keep spreading, the four-part pattern behind them and how to rebuild any look on your photo."
 answer: "ChatGPT photo editing prompts trending Instagram creators reuse share four parts: a look, one lighting idea, a crop for the platform and an identity lock that keeps your face unchanged."
 ---

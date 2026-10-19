@@ -8,10 +8,10 @@ import Answer from '../components/Answer.astro';
 import PageHead from '../components/PageHead.astro';
 import { SITE } from '../data/site.js';
 ---
-<Base title="About promptbin | ChatGPT Photo Prompt Library" description="promptbin is a free library of ChatGPT AI photo editing prompts, managed by Kamlesh Mohabe. Copy-ready prompts, a prompt tool, web stories and guides." schema={[{ '@context': 'https://schema.org', '@type': 'AboutPage', name: 'About promptbin', url: new URL('/about/', Astro.site).href, mainEntity: { '@type': 'Organization', name: SITE.name, url: SITE.url, email: SITE.email, founder: { '@type': 'Person', name: SITE.manager.name, jobTitle: SITE.manager.role } } }]}>
-  <PageHead tone="sand" title="About promptbin" sub="A small, fast library of photo editing prompts for ChatGPT, built for people who want good results without trial and error." crumbs={[[null, 'About']]} />
+<Base title="About promptbeen | ChatGPT Photo Prompt Library" description="promptbeen is a free library of ChatGPT AI photo editing prompts, managed by Kamlesh Mohabe. Copy-ready prompts, a prompt tool, web stories and guides." schema={[{ '@context': 'https://schema.org', '@type': 'AboutPage', name: 'About promptbeen', url: new URL('/about/', Astro.site).href, mainEntity: { '@type': 'Organization', name: SITE.name, url: SITE.url, email: SITE.email, founder: { '@type': 'Person', name: SITE.manager.name, jobTitle: SITE.manager.role } } }]}>
+  <PageHead tone="sand" title="About promptbeen" sub="A small, fast library of photo editing prompts for ChatGPT, built for people who want good results without trial and error." crumbs={[[null, 'About']]} />
   <div class="wrap"><article class="prose">
-    <Answer text="promptbin is a free library of ChatGPT AI photo editing prompts, managed by Kamlesh Mohabe. It publishes copy-ready prompts, a prompt tool, web stories and guides for portraits, couples, text on photos and Instagram trends." />
+    <Answer text="promptbeen is a free library of ChatGPT AI photo editing prompts, managed by Kamlesh Mohabe. It publishes copy-ready prompts, a prompt tool, web stories and guides for portraits, couples, text on photos and Instagram trends." />
     <p>{SITE.name} exists to make photo editing with ChatGPT simpler. Instead of searching through comments and screenshots for a prompt you saw, you can find it here, copy it with one tap and paste it into ChatGPT with your photo. Our focus is ChatGPT AI photo editing prompts that are clear, safe for faces and easy to adapt.</p>
     <h2>Platform manager</h2>
     <div class="mgr">
@@ -47,9 +47,9 @@ import { SITE } from '../data/site.js';
   </article></div>
   <section class="sec">
     <div class="wrap longform">
-      <h2>Why promptbin exists</h2>
+      <h2>Why promptbeen exists</h2>
       <p>The idea came from a small, repeated annoyance. Someone posts a striking photo edit and says it was made with ChatGPT. The caption says "prompt in comments." The comments are a mess of screenshots, half-quotes and people asking for the same thing. By the time you piece together something usable, the edit no longer looks like the one you liked.</p>
-      <p>promptbin is our attempt to fix that for ourselves and for anyone else who has had the same experience. Prompts live in one place, they are written cleanly, and each one is ready to copy. There is no account, no paywall and no pop-up asking you to subscribe. You come, you copy, you leave with something that works.</p>
+      <p>promptbeen is our attempt to fix that for ourselves and for anyone else who has had the same experience. Prompts live in one place, they are written cleanly, and each one is ready to copy. There is no account, no paywall and no pop-up asking you to subscribe. You come, you copy, you leave with something that works.</p>
 
       <h2>How we write and review prompts</h2>
       <p>A prompt is not finished when it sounds good. Before one goes live, we read it against the failures people run into most often: a face that drifts, an extra person who was not in the photo, a background that ignores the light on the subject, and text with a wrong letter. Each prompt has to say what to change, what to keep the same and how to crop the result.</p>
@@ -69,16 +69,16 @@ import { SITE } from '../data/site.js';
       <p>{SITE.manager.name} manages the platform: the library, the admin console where prompts and web stories are published, the guides and the technical side of the site. The site runs on Cloudflare, with the prompts, stories and images stored in a Cloudflare database, and it is built to load fast on a phone. We do not run ads or analytics scripts at the moment. If that changes, the <a href="/privacy-policy/">privacy policy</a> will change first.</p>
       <p>If you spot something wrong, such as a prompt that does not work, a broken link or a guide that is out of date, <a href="/contact/">tell us</a>. Corrections are the fastest way the site gets better.</p>
 
-      <h2>Where promptbin is heading</h2>
+      <h2>Where promptbeen is heading</h2>
       <p>The plan is modest. More prompts for the looks people actually ask about, more web stories that make those prompts easy to scan on a phone, and more guides that answer specific questions rather than general ones. We would also like to make it easier to find a prompt when all you remember is how the finished picture looked. The prompt tool already helps with that, and we expect to keep improving it.</p>
       <p>We will keep the site free. If anything about that ever changes, it will be announced clearly and well in advance, and the prompts already published will stay free to copy.</p>
 
       <h2>Who this site is for</h2>
-      <p>promptbin is for people who want a good edit without learning a new tool: someone updating a profile photo, a couple making a card, a small business owner adding text to a product shot, a student preparing a poster. You do not need design experience. You need a photo, ChatGPT, and a prompt that tells it clearly what to do.</p>
+      <p>promptbeen is for people who want a good edit without learning a new tool: someone updating a profile photo, a couple making a card, a small business owner adding text to a product shot, a student preparing a poster. You do not need design experience. You need a photo, ChatGPT, and a prompt that tells it clearly what to do.</p>
       <p>It is also for people who like to understand what they are pasting. If that is you, the <a href="/blog/">guides</a> explain the reasoning behind each prompt so you can write your own next time.</p>
     </div>
   </section>
 
-  <KeyPoints title="Key points: ChatGPT AI photo editing prompts at promptbin" items={KEY_POINTS.about} />
+  <KeyPoints title="Key points: ChatGPT AI photo editing prompts at promptbeen" items={KEY_POINTS.about} />
   <FaqList title="About our ChatGPT AI photo editing prompts" items={ABOUT_FAQ} />
 </Base>

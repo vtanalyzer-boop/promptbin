@@ -1,5 +1,5 @@
 export const SITE = {
-  name: 'promptbin',
+  name: 'promptbeen',
   email: 'promptbin@gmail.com',
   domain: 'promptbin.in',
   url: 'https://promptbin.in',

@@ -14,7 +14,7 @@ const enabled = adminEnabled();
 ---
 <Admin title="Log in" authed={false}>
   <div class="login">
-    <h1>promptbin Console</h1>
+    <h1>promptbeen Console</h1>
     {(e && errors[e]) && <p class="msg err" style="display:block;margin-bottom:1rem">{errors[e]}</p>}
     {!enabled && !e && <p class="msg err" style="display:block;margin-bottom:1rem">{errors.setup}</p>}
     <form method="post" action="/api/admin/login/">

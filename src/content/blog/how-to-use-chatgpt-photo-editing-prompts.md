@@ -2,7 +2,7 @@
 title: "How to use ChatGPT photo editing prompts (step by step)"
 description: "A simple five-step method to get clean, realistic edits from ChatGPT without changing your face, plus the mistakes to avoid."
 pubDate: 2026-10-11
-seoTitle: "How to Use ChatGPT Photo Editing Prompts | promptbin"
+seoTitle: "How to Use ChatGPT Photo Editing Prompts | promptbeen"
 metaDescription: "A simple five-step method to use ChatGPT photo editing prompts for clean, realistic edits without changing your face, plus the mistakes to avoid."
 answer: "To use ChatGPT photo editing prompts, copy a prompt, upload your photo in ChatGPT, paste the prompt, change any placeholder text and ask for one small fix if the result is close."
 ---

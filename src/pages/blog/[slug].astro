@@ -21,11 +21,13 @@ const schema = [{
   author: { '@type': 'Organization', name: SITE.name }, publisher: { '@type': 'Organization', name: SITE.name },
   mainEntityOfPage: url, image: new URL('/og-default.png', Astro.site).href,
 }];
+const seoTitle = (d.seoTitle || `${d.title} | ${SITE.name}`).replace(/promptbin/gi, SITE.name);
+const metaDesc = (d.metaDescription || d.description).replace(/promptbin/gi, SITE.name);
 ---
-<Base title={d.seoTitle || `${d.title} | ${SITE.name}`} description={d.metaDescription || d.description} ogType="article" schema={schema}>
+<Base title={seoTitle} description={metaDesc} ogType="article" schema={schema}>
   <PageHead title={d.title} sub={d.description} crumbs={[['/blog/', 'Blog'], [null, 'Guide']]} tone={['pink','teal','sand','dusk','sky','mono'][post.data.pubDate.getDate() % 6]} />
   <div class="wrap"><article class="prose">
-    {d.answer && <Answer text={d.answer} label="Quick answer" />}
+    {d.answer && <Answer text={d.answer.replace(/promptbin/gi, SITE.name)} label="Quick answer" />}
     <Content />
   </article></div>
   <FaqList title="Related questions about ChatGPT AI photo editing prompts" items={POST_FAQ[post.id] || []} />

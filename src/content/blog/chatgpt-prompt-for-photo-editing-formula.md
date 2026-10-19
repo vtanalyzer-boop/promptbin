@@ -2,7 +2,7 @@
 title: "A simple formula for a ChatGPT prompt for photo editing (with templates)"
 description: "A repeatable six-part formula for writing a ChatGPT prompt for photo editing, with fill-in templates for portraits, backgrounds and cleanup."
 pubDate: 2026-10-06
-seoTitle: "ChatGPT Prompt for Photo Editing: 6-Part Formula"
+seoTitle: "ChatGPT Prompt for Photo Editing Formula | promptbeen"
 metaDescription: "A repeatable six-part formula for writing a ChatGPT prompt for photo editing, with fill-in templates for portraits, backgrounds, text and cleanup edits."
 answer: "A good ChatGPT prompt for photo editing has six parts: the action, the subject, one style, the light, what must not change and the output crop. Prompts of 30 to 80 words work best."
 ---

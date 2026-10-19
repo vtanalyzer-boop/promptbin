@@ -4,10 +4,10 @@ import Answer from '../components/Answer.astro';
 import PageHead from '../components/PageHead.astro';
 import { SITE } from '../data/site.js';
 ---
-<Base schema={[{ '@context': 'https://schema.org', '@type': 'ContactPage', name: 'Contact promptbin', url: new URL('/contact/', Astro.site).href, mainEntity: { '@type': 'Organization', name: SITE.name, email: SITE.email, contactPoint: { '@type': 'ContactPoint', email: SITE.email, contactType: 'customer support' } } }]} title="Contact promptbin | ChatGPT Prompt Ideas & Support" description="Contact promptbin at promptbin@gmail.com to suggest ChatGPT AI photo editing prompts, ask about a prompt seen ChatGPT creators posted, or report a problem.">
+<Base schema={[{ '@context': 'https://schema.org', '@type': 'ContactPage', name: 'Contact promptbeen', url: new URL('/contact/', Astro.site).href, mainEntity: { '@type': 'Organization', name: SITE.name, email: SITE.email, contactPoint: { '@type': 'ContactPoint', email: SITE.email, contactType: 'customer support' } } }]} title="Contact promptbeen | ChatGPT Prompt Ideas & Support" description="Contact promptbeen at promptbin@gmail.com to suggest ChatGPT AI photo editing prompts, ask about a prompt seen ChatGPT creators posted, or report a problem.">
   <PageHead tone="sky" title="Contact us" sub="Suggest a prompt, report an issue or say hello. We usually reply within a few days." crumbs={[[null, 'Contact']]} />
   <div class="wrap"><article class="prose">
-    <Answer label="Quick answer" text="To reach promptbin, email promptbin@gmail.com or use the form below. Send an idea for ChatGPT AI photo editing prompts, ask about a prompt seen ChatGPT creators posted, or report a problem and we reply within a few days." />
+    <Answer label="Quick answer" text="To reach promptbeen, email promptbin@gmail.com or use the form below. Send an idea for ChatGPT AI photo editing prompts, ask about a prompt seen ChatGPT creators posted, or report a problem and we reply within a few days." />
     <h2>Send us a message</h2>
     <form class="f" action={SITE.formAction} method="post">
       <div><label for="n">Name</label><input id="n" name="name" type="text" autocomplete="name" required /></div>
@@ -16,7 +16,7 @@ import { SITE } from '../data/site.js';
       <div style="position:absolute;left:-9999px" aria-hidden="true"><label>Leave empty<input name="_gotcha" type="text" tabindex="-1" autocomplete="off" /></label></div>
       <button class="btn" type="submit">Send message</button>
     </form>
-    <p>Prefer email? The promptbin team reads every message at <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+    <p>Prefer email? The promptbeen team reads every message at <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
     <h2>What to send us</h2>
     <p>Tell us which of our ChatGPT photo editing prompts helped you most, or which one needs work. The more detail you give, the faster we can help. Here is what is useful for each kind of message.</p>
     <ul>
@@ -34,14 +34,14 @@ import { SITE } from '../data/site.js';
     <p>If you have not heard back after about a week, send a short follow-up with the subject line of your first message. Please do not send the same message through the form and by email at the same time, because it only slows us down.</p>
     <h2>What we cannot help with</h2>
     <ul>
-      <li><strong>Editing your photos for you.</strong> promptbin publishes prompts. We do not receive, edit or return personal photos.</li>
+      <li><strong>Editing your photos for you.</strong> promptbeen publishes prompts. We do not receive, edit or return personal photos.</li>
       <li><strong>ChatGPT account, billing or usage limit problems.</strong> We are not part of OpenAI and cannot see or change your account. Please contact OpenAI for those.</li>
       <li><strong>Requests for copyrighted or protected characters, or a real person's likeness.</strong> We do not publish prompts built to copy a living artist, a protected character or a real person without their consent.</li>
       <li><strong>Guaranteed results.</strong> Output changes with your photo, plan, region and the ChatGPT version, so we cannot promise that a prompt will match an example you saw.</li>
     </ul>
     <h2>Prompt submission guidelines</h2>
     <p>We welcome ChatGPT photo editing prompts that are original, specific and respectful of faces. Prompts that copy a living artist, a protected character or a real person's likeness without consent will not be published. A strong ChatGPT prompt for photo editing submission includes a title, a category such as couple prompt ChatGPT scenes or text overlays, and the prompt itself.</p>
-    <p>By sending a prompt you confirm it is your own work and give promptbin permission to publish and adapt it. We may edit it for clarity, length or safety. The <a href="/terms-and-conditions/">terms and conditions</a> explain this in full.</p>
+    <p>By sending a prompt you confirm it is your own work and give promptbeen permission to publish and adapt it. We may edit it for clarity, length or safety. The <a href="/terms-and-conditions/">terms and conditions</a> explain this in full.</p>
     <h3>A good submission</h3>
     <p><em>Title: Warm golden hour portrait. Category: Portrait. Prompt: Edit my uploaded photo so it looks like it was taken one hour before sunset. Add soft warm light from the left, keep my face, skin tone and hair exactly as they are, gently blur the background and do not add or remove any objects. Suits: outdoor head and shoulders photos.</em></p>
     <p>This works because it has a clear title, says what to change and what to keep, and names the photo type it suits.</p>
@@ -61,6 +61,6 @@ import { SITE } from '../data/site.js';
     <p>Most of the messages we can act on quickly have three things in common. They name the style, they say what should stay the same in the photo, and they mention where the idea came from, such as a ChatGPT photo editing prompts text template you tried or a post you saw. If a prompt did not work for you, tell us what you got instead, because that helps us decide whether the prompt, the wording or the ChatGPT version was the problem.</p>
     <p>We also like to hear what you used a prompt for. Knowing that people use a prompt for profile photos, birthday cards or small shop listings helps us write better examples. Please keep names and private details of other people out of your message.</p>
     <h2>Privacy note</h2>
-    <p>Your name, email address and message are sent through a third-party form service (Formspree) to the promptbin inbox. We use them only to reply, to review prompt suggestions or to fix problems. You can ask us to delete your messages by emailing <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. Read the full <a href="/privacy-policy/">privacy policy</a> for details. Please do not send passwords, payment details or private photos of other people.</p>
+    <p>Your name, email address and message are sent through a third-party form service (Formspree) to the promptbeen inbox. We use them only to reply, to review prompt suggestions or to fix problems. You can ask us to delete your messages by emailing <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. Read the full <a href="/privacy-policy/">privacy policy</a> for details. Please do not send passwords, payment details or private photos of other people.</p>
   </article></div>
 </Base>

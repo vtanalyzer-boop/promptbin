@@ -1,15 +1,15 @@
 ---
 title: "ChatGPT photo editing prompts web stories: how to use them"
-description: "How promptbin web stories show ChatGPT photo editing prompts in short, swipeable slides, and how to turn a story into your own edit."
+description: "How promptbeen web stories show ChatGPT photo editing prompts in short, swipeable slides, and how to turn a story into your own edit."
 pubDate: 2026-10-12
-seoTitle: "Web Stories for ChatGPT Photo Editing Prompts: A Guide"
-metaDescription: "How promptbin web stories show ChatGPT AI photo editing prompts in short swipeable slides, and how to turn any story into your own ChatGPT photo edit."
+seoTitle: "ChatGPT Photo Editing Prompts Web Stories | promptbeen"
+metaDescription: "How promptbeen web stories show ChatGPT AI photo editing prompts in short swipeable slides, and how to turn any story into your own ChatGPT photo edit."
 answer: "ChatGPT photo editing prompts web stories are short, swipe-through slides that show a set of ChatGPT AI photo editing prompts in under a minute, with a link to the full guide on the last slide."
 ---
 
-Web stories are short, full-screen slides you tap through on your phone. promptbin publishes ChatGPT photo editing prompts web stories so you can scan a whole set of ChatGPT AI photo editing prompts in under a minute, then copy the one you like. This guide explains how they work and how to get the most from them.
+Web stories are short, full-screen slides you tap through on your phone. promptbeen publishes ChatGPT photo editing prompts web stories so you can scan a whole set of ChatGPT AI photo editing prompts in under a minute, then copy the one you like. This guide explains how they work and how to get the most from them.
 
-## What is in a promptbin web story
+## What is in a promptbeen web story
 
 Each story has five to seven slides. The first slide names the topic, such as ChatGPT photo editing prompts trending Instagram creators reuse. The middle slides show one look each, with a short tip on keeping faces unchanged. The last slide links to the full guide or to the prompt library, where the exact ChatGPT prompt for photo editing is ready to copy.
 

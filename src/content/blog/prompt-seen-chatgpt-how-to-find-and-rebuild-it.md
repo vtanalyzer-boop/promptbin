@@ -2,7 +2,7 @@
 title: "Prompt seen ChatGPT: how to find and rebuild it"
 description: "Saw a ChatGPT photo edit in a Reel or comment and want the prompt? Here is how to find it, rebuild it and fix it when it does not work."
 pubDate: 2026-10-07
-seoTitle: "Prompt Seen ChatGPT: Find and Rebuild It | promptbin"
+seoTitle: "Prompt Seen ChatGPT: Find and Rebuild It | promptbeen"
 metaDescription: "Saw a ChatGPT photo edit in a Reel and want the prompt? Learn how to find a prompt seen ChatGPT creators share, rebuild it and fix it when it fails."
 answer: "To find a prompt seen ChatGPT creators share, search the library by look, copy the closest match and rebuild missing parts with the prompt tool, keeping the identity lock line."
 ---

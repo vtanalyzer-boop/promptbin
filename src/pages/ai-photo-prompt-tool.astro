@@ -7,15 +7,15 @@ import { KEY_POINTS } from '../data/extra-faq.js';
 import Answer from '../components/Answer.astro';
 import PageHead from '../components/PageHead.astro';
 const mods = ['Keep the original face, identity and proportions unchanged', 'Ultra-realistic skin texture and fine detail', 'Cinematic lighting with soft contrast', 'Shallow depth of field with gentle background blur', 'Subtle film grain', 'Warm, natural color grading', 'High resolution, sharp focus', 'Vertical 4:5 crop for Instagram', 'Do not add extra people, objects or text', 'Keep clothing and pose exactly the same'];
-const schema = [{ '@context': 'https://schema.org', '@type': 'WebApplication', name: 'promptbin Prompt Tool', applicationCategory: 'UtilitiesApplication',
+const schema = [{ '@context': 'https://schema.org', '@type': 'WebApplication', name: 'promptbeen Prompt Tool', applicationCategory: 'UtilitiesApplication',
   operatingSystem: 'Any', offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, url: new URL('/ai-photo-prompt-tool/', Astro.site).href }];
 ---
-<Base title="Free ChatGPT Prompt for Photo Editing Tool | promptbin"
+<Base title="Free ChatGPT Prompt for Photo Editing Tool | promptbeen"
   description="Free tool to generate, modify, edit and correct any ChatGPT prompt for photo editing. Build ChatGPT AI photo editing prompts in your browser, no sign-up."
   schema={schema}>
   <PageHead tone="dusk" title="Free ChatGPT photo editing prompt tool" sub="Generate, modify, edit and correct any ChatGPT prompt for photo editing. Runs in your browser, nothing is uploaded." crumbs={[[null, 'Prompt tool']]} />
   <section class="sec"><div class="wrap">
-    <Answer text="The promptbin prompt tool is a free, browser-based generator, modifier, editor and corrector for every ChatGPT prompt for photo editing. Choose a look, get a complete prompt that protects faces, and copy it into ChatGPT. Nothing you type is uploaded." />
+    <Answer text="The promptbeen prompt tool is a free, browser-based generator, modifier, editor and corrector for every ChatGPT prompt for photo editing. Choose a look, get a complete prompt that protects faces, and copy it into ChatGPT. Nothing you type is uploaded." />
     <div class="tabs" role="tablist" aria-label="Prompt tool modes">
       <button class="tab" role="tab" data-t="gen" aria-selected="true">Generator</button>
       <button class="tab" role="tab" data-t="mod" aria-selected="false">Modifier</button>
