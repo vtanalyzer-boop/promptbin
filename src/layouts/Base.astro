@@ -5,11 +5,18 @@ import Footer from '../components/Footer.astro';
 import { SITE } from '../data/site.js';
 
 const { title, description, schema = [], noindex = false, ogType = 'website', keywords = '', ogImage = '/og-default.png' } = Astro.props;
-const canonical = new URL(Astro.url.pathname, Astro.site).href;
+
+const lang = Astro.url.searchParams.get('lang') || Astro.currentLocale || Astro.locals.lang || 'en';
+const path = Astro.url.pathname;
+const cleanPath = path.replace(/^\/([a-z]{2}(?:-[A-Za-z]+)?)(?=\/|$)/, '') || '/';
+const canonical = new URL(cleanPath + (lang !== 'en' ? `?lang=${lang}` : ''), Astro.site).href;
 const og = new URL(ogImage, Astro.site).href;
+
+const defaultUrl = new URL(cleanPath, Astro.site).href;
+const ALL_LANGS = ['en', 'hi', 'mr', 'bn', 'ta', 'es', 'fr', 'de', 'pt', 'ru', 'ar', 'tr', 'id', 'ja', 'zh-CN'];
 ---
 <!doctype html>
-<html lang="en">
+<html lang={lang} data-lang={lang} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
   <head>
     <meta charset="utf-8" />
     <meta name="color-scheme" content="light dark" />
@@ -22,6 +29,10 @@ const og = new URL(ogImage, Astro.site).href;
     {keywords && <meta name="keywords" content={keywords} />}
     <meta name="robots" content={noindex ? 'noindex,follow' : 'index,follow,max-image-preview:large'} />
     <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="x-default" href={defaultUrl} />
+    {ALL_LANGS.map((l) => (
+      <link rel="alternate" hreflang={l} href={new URL(l === 'en' ? cleanPath : `${cleanPath}?lang=${l}`, Astro.site).href} />
+    ))}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="icon" href="/favicon-96x96.png" sizes="96x96" type="image/png" />

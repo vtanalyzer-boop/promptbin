@@ -1,8 +1,45 @@
 ---
+export const prerender = false;
 import Base from '../layouts/Base.astro';
 import FilmStrip from '../components/FilmStrip.astro';
+
+const SUPPORTED_LANGS = new Set(['hi', 'mr', 'bn', 'ta', 'es', 'fr', 'de', 'pt', 'ru', 'ar', 'tr', 'id', 'ja', 'zh-CN']);
+const path = Astro.url.pathname;
+const langMatch = path.match(/^\/([a-z]{2}(?:-[A-Za-z]+)?)(?:\/|$)(.*)/);
+
+if (langMatch && SUPPORTED_LANGS.has(langMatch[1])) {
+  const lang = langMatch[1];
+  const rest = '/' + (langMatch[2] || '');
+  const cleanTarget = rest === '/' ? '/' : rest.replace(/\/?$/, '/');
+  Astro.response.headers.set('Set-Cookie', `googtrans=/en/${lang}; Path=/; SameSite=Lax`);
+  return Astro.redirect(`${cleanTarget}?lang=${lang}`, 302);
+} else if (langMatch && langMatch[1] === 'en') {
+  const rest = '/' + (langMatch[2] || '');
+  const cleanTarget = rest === '/' ? '/' : rest.replace(/\/?$/, '/');
+  Astro.response.headers.set('Set-Cookie', 'googtrans=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Lax');
+  return Astro.redirect(cleanTarget, 301);
+}
 ---
 <Base title="Page not found (404) | promptbin" description="Page not found." noindex>
+  <script is:inline>
+    (function() {
+      var p = window.location.pathname;
+      var m = p.match(/^\/([a-z]{2}(?:-[A-Za-z]+)?)(?:\/|$)(.*)/);
+      var langs = ['hi', 'mr', 'bn', 'ta', 'es', 'fr', 'de', 'pt', 'ru', 'ar', 'tr', 'id', 'ja', 'zh-CN'];
+      if (m && langs.indexOf(m[1]) > -1) {
+        var lang = m[1];
+        var rest = '/' + (m[2] || '');
+        var target = (rest === '/' ? '/' : rest.replace(/\/?$/, '/')) + '?lang=' + lang;
+        document.cookie = 'googtrans=/en/' + lang + '; path=/; SameSite=Lax';
+        window.location.replace(target + window.location.hash);
+      } else if (m && m[1] === 'en') {
+        var rest = '/' + (m[2] || '');
+        var target = rest === '/' ? '/' : rest.replace(/\/?$/, '/');
+        document.cookie = 'googtrans=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Lax';
+        window.location.replace(target + window.location.hash);
+      }
+    })();
+  </script>
   <section class="hero2" data-tone="dusk" style="text-align:center">
     <FilmStrip />
     <div class="wrap err" style="padding-block:clamp(3rem,10vw,6rem)">

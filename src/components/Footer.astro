@@ -1,14 +1,17 @@
 ---
 import Logo from './Logo.astro';
 import { SITE } from '../data/site.js';
+
+const lang = Astro.url.searchParams.get('lang') || Astro.currentLocale || Astro.locals.lang || 'en';
+const loc = (h) => (lang !== 'en' ? `${h}${h.includes('?') ? '&' : '?'}lang=${lang}` : h);
 ---
 <footer class="ft">
   <div class="wrap">
     <div class="cols">
-      <div><a class="logo" href="/"><Logo />{SITE.name}</a><p>{SITE.tagline}</p><p class="mgrline">{SITE.manager.label}: <strong>{SITE.manager.name}</strong>, {SITE.manager.role}<br /><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p></div>
-      <div><h3>Explore</h3><ul><li><a href="/">Photo prompts</a></li><li><a href="/ai-photo-prompt-tool/">Prompt tool</a></li><li><a href="/web-stories/">Web Stories</a></li><li><a href="/blog/">Blog</a></li><li><a href="/faq/">FAQ</a></li></ul></div>
-      <div><h3>Company</h3><ul><li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li></ul></div>
-      <div><h3>Legal</h3><ul><li><a href="/privacy-policy/">Privacy policy</a></li><li><a href="/terms-and-conditions/">Terms</a></li><li><a href="/disclaimer/">Disclaimer</a></li></ul></div>
+      <div><a class="logo" href={loc('/')}><Logo />{SITE.name}</a><p>{SITE.tagline}</p><p class="mgrline">{SITE.manager.label}: <strong>{SITE.manager.name}</strong>, {SITE.manager.role}<br /><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p></div>
+      <div><h3>Explore</h3><ul><li><a href={loc('/')}>Photo prompts</a></li><li><a href={loc('/ai-photo-prompt-tool/')}>Prompt tool</a></li><li><a href={loc('/web-stories/')}>Web Stories</a></li><li><a href={loc('/blog/')}>Blog</a></li><li><a href={loc('/faq/')}>FAQ</a></li></ul></div>
+      <div><h3>Company</h3><ul><li><a href={loc('/about/')}>About</a></li><li><a href={loc('/contact/')}>Contact</a></li></ul></div>
+      <div><h3>Legal</h3><ul><li><a href={loc('/privacy-policy/')}>Privacy policy</a></li><li><a href={loc('/terms-and-conditions/')}>Terms</a></li><li><a href={loc('/disclaimer/')}>Disclaimer</a></li></ul></div>
     </div>
     <small>&copy; {new Date().getFullYear()} {SITE.name}. Not affiliated with, endorsed by or sponsored by OpenAI. ChatGPT is a trademark of OpenAI.</small>
   </div>

@@ -1,24 +1,48 @@
 ---
 import Logo from './Logo.astro';
 import { SITE } from '../data/site.js';
+
+const lang = Astro.url.searchParams.get('lang') || Astro.currentLocale || Astro.locals.lang || 'en';
 const path = Astro.url.pathname;
+const localize = (h) => (lang !== 'en' ? `${h}${h.includes('?') ? '&' : '?'}lang=${lang}` : h);
 const tool = '/ai-photo-prompt-tool/';
 const isActive = (h) => (h === '/' ? path === '/' : path.startsWith(h));
+
+const LANGUAGES = [
+  ['en', 'English'],
+  ['hi', 'हिन्दी (Hindi)'],
+  ['mr', 'मराठी (Marathi)'],
+  ['bn', 'বাংলা (Bengali)'],
+  ['ta', 'தமிழ் (Tamil)'],
+  ['es', 'Español'],
+  ['fr', 'Français'],
+  ['de', 'Deutsch'],
+  ['pt', 'Português'],
+  ['ru', 'Русский'],
+  ['ar', 'العربية'],
+  ['tr', 'Türkçe'],
+  ['id', 'Bahasa Indonesia'],
+  ['ja', '日本語'],
+  ['zh-CN', '简体中文'],
+];
 ---
 <header class="hd">
   <div class="wrap">
-    <a class="logo notranslate" translate="no" href="/"><Logo />{SITE.name}</a>
+    <a class="logo notranslate" translate="no" href={localize('/')}><Logo />{SITE.name}</a>
     <nav class="nav" id="nav" aria-label="Main">
-      {SITE.nav.map(([href, label]) => (
-        <a href={href} class={href === tool && !isActive(href) ? 'cta' : undefined} aria-current={isActive(href) ? 'page' : undefined}>{label}</a>
-      ))}
+      {SITE.nav.map(([href, label]) => {
+        const locHref = localize(href);
+        return (
+          <a href={locHref} class={href === tool && !isActive(href) ? 'cta' : undefined} aria-current={isActive(href) ? 'page' : undefined}>{label}</a>
+        );
+      })}
     </nav>
     <div class="tools notranslate" translate="no">
       <label class="sr" for="lang">Language</label>
-      <select class="lsel" id="lang" aria-label="Choose language">
-        <option value="en">English</option><option value="hi">हिन्दी (Hindi)</option><option value="mr">मराठी (Marathi)</option><option value="bn">বাংলা (Bengali)</option><option value="ta">தமிழ் (Tamil)</option>
-        <option value="es">Español</option><option value="fr">Français</option><option value="de">Deutsch</option><option value="pt">Português</option><option value="ru">Русский</option>
-        <option value="ar">العربية</option><option value="tr">Türkçe</option><option value="id">Bahasa Indonesia</option><option value="ja">日本語</option><option value="zh-CN">简体中文</option>
+      <select class="lsel" id="lang" aria-label="Choose language" data-current={lang}>
+        {LANGUAGES.map(([code, name]) => (
+          <option value={code} selected={code === lang}>{name}</option>
+        ))}
       </select>
       <button class="tbtn" id="theme" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Light / dark mode">
         <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>

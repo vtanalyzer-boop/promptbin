@@ -9,7 +9,6 @@ export default defineConfig({
   trailingSlash: 'always',
   compressHTML: true,
   // Runs on Cloudflare Workers. Blog/FAQ/legal pages are prerendered to static HTML at build time.
-  // Home grid, Web Stories, /admin and /api read from the Cloudflare D1 database at request time.
   adapter: cloudflare(),
   prefetch: { prefetchAll: true, defaultStrategy: 'hover' },
   build: { inlineStylesheets: 'always' },

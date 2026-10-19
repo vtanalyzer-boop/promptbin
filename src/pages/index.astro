@@ -25,6 +25,8 @@ const stories = (await listStories({ publishedOnly: true, limit: 4 }));
 const posts = (await getCollection('blog')).sort((a, b) => +b.data.pubDate - +a.data.pubDate).slice(0, 3);
 const demo = items.slice(0, 4).map((p) => ({ t: p.title, x: p.text }));
 const first = demo[0];
+const lang = Astro.url.searchParams.get('lang') || Astro.currentLocale || Astro.locals.lang || 'en';
+const loc = (h) => (lang !== 'en' ? `${h}${h.includes('?') ? '&' : '?'}lang=${lang}` : h);
 const schema = [
   { '@context': 'https://schema.org', '@type': 'WebSite', name: SITE.name, url: Astro.site.href,
     potentialAction: { '@type': 'SearchAction', target: `${Astro.site.href}?q={q}`, 'query-input': 'required name=q' } },
@@ -50,7 +52,7 @@ const schema = [
           <span aria-hidden="true">Prompts for <span class="typed" id="typed" data-words={JSON.stringify(['trending Instagram edits', 'couple photos', 'text on photos', 'portrait glow-ups', 'background swaps', 'film and retro looks'])}>trending Instagram edits</span><span class="caret"></span></span>
         </p>
         <p class="lead">Tap Copy Prompt on any of our ChatGPT photo editing prompts, paste it into ChatGPT with your photo, and finish a polished edit in seconds. Free, fast and no sign-up.</p>
-        <div class="acts"><a class="btn" href="#library">Browse prompts</a><a class="btn alt" href="/ai-photo-prompt-tool/">Open prompt tool</a></div>
+        <div class="acts"><a class="btn" href="#library">Browse prompts</a><a class="btn alt" href={loc('/ai-photo-prompt-tool/')}>Open prompt tool</a></div>
       </div>
       <div class="composer" id="composer" data-items={JSON.stringify(demo)}>
         <div class="cbar"><i></i><span><b>my-photo.jpg</b> attached in ChatGPT</span></div>
@@ -187,7 +189,7 @@ const schema = [
       <div>
         <h2>One tool to write, fix and improve your prompts</h2>
         <p>The free prompt tool combines a prompt generator, modifier, editor and corrector. It runs in your browser, so your text stays on your device.</p>
-        <p style="margin-top:1.2rem"><a class="btn" href="/ai-photo-prompt-tool/">Try the prompt tool</a></p>
+        <p style="margin-top:1.2rem"><a class="btn" href={loc('/ai-photo-prompt-tool/')}>Try the prompt tool</a></p>
       </div>
       <div class="pbox"><p><strong>Corrector example</strong></p><p>Before: edit my photoo wiht cinamatic ligting, dont change face</p><p>After: Edit my photo with cinematic lighting, don't change face.</p></div>
     </div>
@@ -218,7 +220,7 @@ const schema = [
             <li><a class="story" href={`/web-stories/${s.id}/`}><img src={coverSrc(s.cover)} width="320" height="427" alt={`ChatGPT AI photo editing prompts web story cover: ${s.title}`} loading="lazy" decoding="async" /><span class="story-b"><b>{s.title}</b><small>{s.slides.length} slides</small></span></a></li>
           ))}
         </ul>
-        <p style="margin-top:1rem"><a href="/web-stories/">All web stories</a></p>
+        <p style="margin-top:1rem"><a href={loc('/web-stories/')}>All web stories</a></p>
       </div>
     </section>
   )}
@@ -229,10 +231,10 @@ const schema = [
       <p class="intro">Tips for getting cleaner results from ChatGPT photo edits.</p>
       <div class="posts">
         {posts.map((p) => (
-          <article class="post"><span class="meta">Guide</span><h3><a href={`/blog/${p.id}/`}>{p.data.title}</a></h3><p>{p.data.description}</p></article>
+          <article class="post"><span class="meta">Guide</span><h3><a href={loc(`/blog/${p.id}/`)}>{p.data.title}</a></h3><p>{p.data.description}</p></article>
         ))}
       </div>
-      <p style="margin-top:1rem"><a href="/blog/">All guides</a></p>
+      <p style="margin-top:1rem"><a href={loc('/blog/')}>All guides</a></p>
     </div>
   </section>
 
