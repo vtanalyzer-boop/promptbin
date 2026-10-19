@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import { getImgSafe } from '../data/images.js';
 const { p, eager = false } = Astro.props;
 const first = p.cats.split(' ')[0];
@@ -17,7 +16,7 @@ const load = eager ? { loading: 'eager', decoding: 'sync', fetchpriority: 'high'
       width="400" height="500" alt={alt} {...load}
     />
   ) : ph ? (
-    <Image src={ph} width={400} height={500} alt={alt} {...load} />
+    <img src={ph.src} width="400" height="500" alt={alt} {...load} />
   ) : (
     <div class="phimg" role="img" aria-label={alt}></div>
   )}

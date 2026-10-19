@@ -13,6 +13,12 @@ export default defineConfig({
   adapter: cloudflare(),
   prefetch: { prefetchAll: true, defaultStrategy: 'hover' },
   build: { inlineStylesheets: 'always' },
+  vite: {
+    build: {
+      cssMinify: true,
+      minify: 'esbuild',
+    },
+  },
   security: {
     checkOrigin: false, // origin is verified in src/lib/auth.js
     // Content-Security-Policy: Astro adds a <meta> CSP with a hash for every script and style it emits (no 'unsafe-inline' for scripts).

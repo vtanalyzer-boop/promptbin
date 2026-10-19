@@ -41,7 +41,7 @@ async function type(el, text, speed) {
   for (let i = 1; i <= text.length; i++) {
     await ready();
     el.textContent = text.slice(0, i);
-    await sleep(speed + Math.random() * speed * 0.6);
+    await sleep(speed);
   }
 }
 async function erase(el, speed) {
@@ -53,38 +53,55 @@ async function erase(el, speed) {
   }
 }
 
-const typed = $('#typed');
-if (typed && !reduce) {
-  const words = JSON.parse(typed.dataset.words);
-  (async () => {
-    let i = 0;
-    await sleep(1400);
-    for (;;) {
-      await erase(typed, 26);
-      await sleep(250);
-      i = (i + 1) % words.length;
-      await type(typed, words[i], 55);
-      await sleep(1700);
+// Start visual enhancements only after the initial page load has settled
+const initAnimations = () => {
+  const typed = $('#typed');
+  if (typed && !reduce) {
+    const words = JSON.parse(typed.dataset.words || '[]');
+    if (words.length > 1) {
+      (async () => {
+        let i = 0;
+        await sleep(3000);
+        for (;;) {
+          await ready();
+          await sleep(2500);
+          await erase(typed, 30);
+          await sleep(200);
+          i = (i + 1) % words.length;
+          await type(typed, words[i], 50);
+        }
+      })();
     }
-  })();
-}
+  }
 
-const box = $('#composer');
-if (box && !reduce) {
-  const items = JSON.parse(box.dataset.items);
-  const out = $('#ctext'), title = $('#ctitle'), btn = $('#ccopy');
-  (async () => {
-    let i = 0;
-    await sleep(2200);
-    for (;;) {
-      i = (i + 1) % items.length;
-      out.textContent = '';
-      btn.classList.remove('pulse');
-      title.textContent = items[i].t;
-      await type(out, items[i].x, 14);
-      btn.setAttribute('data-copy', items[i].x);
-      btn.classList.add('pulse');
-      await sleep(3600);
+  const box = $('#composer');
+  if (box && !reduce) {
+    const items = JSON.parse(box.dataset.items || '[]');
+    const out = $('#ctext'), title = $('#ctitle'), btn = $('#ccopy');
+    if (out && items.length > 1) {
+      (async () => {
+        let i = 0;
+        await sleep(4500);
+        for (;;) {
+          await ready();
+          await sleep(4000);
+          i = (i + 1) % items.length;
+          // Smooth fade transition prevents layout jumps and main-thread thrashing
+          out.style.transition = 'opacity 0.25s ease';
+          out.style.opacity = '0';
+          await sleep(250);
+          title.textContent = items[i].t;
+          out.textContent = items[i].x;
+          btn.setAttribute('data-copy', items[i].x);
+          out.style.opacity = '1';
+        }
+      })();
     }
-  })();
+  }
+};
+
+if (document.readyState === 'complete') {
+  setTimeout(initAnimations, 1000);
+} else {
+  window.addEventListener('load', () => setTimeout(initAnimations, 1000));
 }
