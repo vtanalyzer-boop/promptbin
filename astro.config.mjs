@@ -23,12 +23,34 @@ export default defineConfig({
     // Content-Security-Policy: Astro adds a <meta> CSP with a hash for every script and style it emits (no 'unsafe-inline' for scripts).
     csp: {
       algorithm: 'SHA-256',
-      scriptDirective: { resources: ["'self'", 'https://translate.google.com', 'https://translate.googleapis.com', 'https://www.gstatic.com'] },
-      styleDirective: { resources: ["'self'", 'https://www.gstatic.com', 'https://translate.googleapis.com', { resource: "'unsafe-inline'", kind: 'attribute' }] },
+      scriptDirective: {
+        strictDynamic: true,
+        resources: [
+          "'self'",
+          "'unsafe-inline'",
+          "'unsafe-eval'",
+          'https://translate.google.com',
+          'https://translate.googleapis.com',
+          'https://www.gstatic.com',
+        ],
+        hashes: [
+          'sha256-2zWIz9fsIXSyEwXqszTXBbqUeBAobYACRo+L5DwmEsM=',
+        ],
+      },
+      styleDirective: {
+        resources: [
+          "'self'",
+          "'unsafe-inline'",
+          'https://www.gstatic.com',
+          'https://translate.googleapis.com',
+          'https://translate.google.com',
+          { resource: "'unsafe-inline'", kind: 'attribute' },
+        ],
+      },
       directives: [
         "default-src 'self'",
-        "img-src 'self' data: blob: https://www.gstatic.com https://translate.googleapis.com https://www.google.com",
-        "font-src 'self' data:",
+        "img-src 'self' data: blob: https://www.gstatic.com https://translate.googleapis.com https://translate.google.com https://www.google.com",
+        "font-src 'self' data: https://fonts.gstatic.com",
         "connect-src 'self' https://translate.googleapis.com https://translate.google.com",
         "frame-src https://translate.google.com",
         "object-src 'none'",
