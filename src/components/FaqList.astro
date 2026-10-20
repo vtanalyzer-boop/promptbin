@@ -5,6 +5,6 @@ const { title, items = [], intro = '' } = Astro.props;
   <div class="wrap" style="max-width:860px">
     <h2>{title}</h2>
     {intro && <p class="intro">{intro}</p>}
-    {items.map(([q, a]) => <details><summary>{q}</summary><p>{a}</p></details>)}
+    {(items || []).filter(Boolean).map(([q, a]) => <details><summary>{q}</summary><p>{a}</p></details>)}
   </div>
 </section>

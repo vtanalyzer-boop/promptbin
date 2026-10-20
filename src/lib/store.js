@@ -6,7 +6,7 @@ import { saveImage, removeImageKey, newImageKey } from './images.js';
 /** Public URL of a prompt's uploaded photo (size 400 or 800), or null when it uses the built-in illustration. */
 export const imageUrl = (p, size = 400) => (p?.image ? `/uploads/${p.image}-${size}.webp` : null);
 
-export const CATS = ['trending', 'couple', 'portrait', 'text', 'style', 'background'];
+export const CATS = ['trending', 'couple', 'family', 'portrait', 'text', 'style', 'background'];
 
 const fromRow = (r) => ({ id: r.id, slug: r.id, title: r.title, text: r.text, cats: r.cats, image: r.image, published: !!r.published, createdAt: r.created_at });
 

@@ -37,6 +37,7 @@ import { $, $$, say, copy } from './pf.js';
     type: [
       ['Portrait glow-up', 'Edit my uploaded photo as a polished portrait: natural skin retouching, brighter eyes, clean flyaway hair and crisp details'],
       ['Couple photo', 'Edit my uploaded photo of a couple into a romantic, cinematic image while keeping both people clearly recognizable'],
+      ['Family photo', 'Family photo prompts: Edit my uploaded family photo into a warm, harmonious portrait while keeping all faces, identities and smiles completely unchanged'],
       ['Background change', 'Edit my uploaded photo by replacing only the background, keeping the subject, edges and pose untouched'],
       ['Style transfer', 'Redraw my uploaded photo in a new artistic style while keeping the pose, outfit and composition'],
       ['Text overlay', 'Edit my uploaded photo into a designed graphic with clean typography that never covers the face'],

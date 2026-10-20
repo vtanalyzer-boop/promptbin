@@ -1,16 +1,28 @@
 // One entry per card. Put a matching image in src/assets/prompts/<slug>.(webp|jpg|png|svg)
 export const FILTERS = [
-  ['all', 'All'], ['trending', 'Trending Instagram'], ['couple', 'Couple'], ['portrait', 'Portrait'],
+  ['all', 'All'], ['trending', 'Trending Instagram'], ['couple', 'Couple'], ['family', 'Family'], ['portrait', 'Portrait'],
   ['text', 'Text on photo'], ['style', 'Art styles'], ['background', 'Background'],
 ];
 
 export const PROMPTS = [
   { slug: 'golden-hour-portrait', title: 'Golden hour portrait', cats: 'trending portrait',
     text: 'Edit my photo into a golden hour portrait. Warm sunlight from behind, soft rim light on the hair, gentle lens flare, natural skin texture and shallow depth of field. Keep my face, hairstyle and proportions exactly the same. Vertical 4:5 for Instagram.' },
-  { slug: 'cinematic-couple-street', title: 'Cinematic couple on a neon street', cats: 'couple trending',
-    text: 'Transform this photo of two people into a cinematic night street scene with neon reflections on wet pavement. Keep both faces, outfits and body language unchanged. Add soft teal and orange color grading, subtle film grain and a 35mm look. Vertical 4:5.' },
-  { slug: 'couple-sunset-beach', title: 'Couple at sunset beach', cats: 'couple',
-    text: 'Place the couple in my photo on a quiet beach at sunset. Warm pink and orange sky, gentle waves, soft light on both faces. Keep both people recognizable with the same faces, skin tones and poses. Realistic, romantic and uncluttered.' },
+  { slug: 'gemini-couple-golden-sunset', title: 'Gemini AI couple photo prompt copy paste', cats: 'couple trending',
+    text: 'Gemini AI couple photo prompt copy paste: Couple romantic prompt for Gemini AI. Transform our couple photo into a cinematic golden sunset scene on a tranquil coastline with gentle warm sunlight, soft bokeh, and realistic skin tones. Keep both faces, expressions, and clothing completely unchanged. Polished couple photo prompt formatted for Instagram vertical 4:5.' },
+  { slug: 'family-photo-prompts-garden', title: 'Family photo prompts: sunlit outdoor garden', cats: 'family trending',
+    text: 'Family photo prompts: Edit our uploaded family group photo into a warm outdoor portrait in a sunlit botanical garden. Keep every single family member\'s face, smile, identity, and clothing perfectly consistent and unaltered. Soft depth of field, gentle background greenery blur, and warm natural tones.' },
+  { slug: 'cinematic-couple-street', title: 'Cinematic couple photo prompt on neon street', cats: 'couple trending',
+    text: 'Couple photo prompt: Transform this photo of two people into a cinematic night street scene with neon reflections on wet pavement. Keep both faces, outfits and body language unchanged. Add soft teal and orange color grading, subtle film grain and a 35mm look. Vertical 4:5.' },
+  { slug: 'new-trending-miniature-diorama', title: 'New trending prompt: 3D miniature diorama', cats: 'trending style',
+    text: 'New trending prompt: Gemini AI prompt copy paste. Turn the subject of my photo into a hyperrealistic miniature diorama figure inside a warm glass display terrarium. Clean macro photography focus, gentle studio rim lighting, and accurate clothing colors. Keep my face and likeness completely recognizable.' },
+  { slug: 'romantic-couple-rainy-neon', title: 'Romantic couple AI prompts: neon rain', cats: 'couple',
+    text: 'Romantic couple AI prompts: Cinematic couple prompt for Gemini AI and ChatGPT. Place both of us under a clear umbrella on a rainy downtown street at dusk with soft neon reflections on wet asphalt. Keep both faces, eye shapes, and hairstyles unchanged. Atmospheric, romantic 35mm film photography.' },
+  { slug: 'cozy-family-living-room', title: 'Family photo prompts: cozy living room', cats: 'family portrait',
+    text: 'Family photo prompts: Edit our family snapshot into a cozy holiday living room portrait with warm window light and soft ambient shadows. Keep all children and adults\' facial features, ages, and authentic expressions intact. Natural, harmonious color grading.' },
+  { slug: 'gemini-prompt-couple-studio', title: 'Gemini prompt couple: editorial minimalist', cats: 'couple portrait',
+    text: 'Gemini prompt couple: Clean couple photo prompt. Edit our photo into an editorial studio portrait with soft diffused lighting on a seamless beige backdrop. Natural skin retouching, authentic smiles, and zero distortion. Keep both people\'s identities and facial proportions strictly unchanged.' },
+  { slug: 'couple-sunset-beach', title: 'Romantic couple photo prompt at sunset beach', cats: 'couple',
+    text: 'Romantic couple AI prompts: Place the couple in my photo on a quiet beach at sunset. Warm pink and orange sky, gentle waves, soft light on both faces. Keep both people recognizable with the same faces, skin tones and poses. Realistic, romantic and uncluttered.' },
   { slug: 'minimal-studio-portrait', title: 'Minimal studio portrait', cats: 'portrait',
     text: 'Edit this photo into a clean studio portrait on a seamless light grey backdrop. Soft box lighting, natural skin retouching, sharp eyes, no heavy smoothing. Keep my face and expression unchanged. Square 1:1.' },
   { slug: 'magazine-cover-text', title: 'Magazine cover with text', cats: 'text trending',

@@ -29,11 +29,19 @@ export const FAQ = [
   ['How can I find a prompt seen ChatGPT users shared if I only remember part of it?', 'Describe the look in the search box, then open the prompt seen ChatGPT creators mention in the matching category. The corrector fixes typos and missing words, and the generator rebuilds the structure around the part you remember.'],
   ['Can I use ChatGPT photo editing prompts text for a poster or a card?', 'Yes. ChatGPT photo editing prompts text for posters and birthday cards work well when you choose a bold lettering style, one solid color band for the words and a position that never covers faces. Our text web story shows four ready examples.'],
   ['Are your ChatGPT AI photo editing prompts free to copy and share?', 'Yes. All ChatGPT AI photo editing prompts on promptbeen are free to copy. When you share a prompt, a link back to promptbin.in is appreciated but not required.'],
-  ['Is promptbeen affiliated with OpenAI?', 'No. promptbeen is an independent site. ChatGPT is a trademark of OpenAI, and we are not affiliated with, endorsed by or sponsored by OpenAI.'],
+  ['Can I use these prompts as a Gemini AI photo prompt copy paste?', 'Yes. Every prompt in our library is engineered to be dual-compatible as a Gemini AI photo prompt copy paste as well as for ChatGPT. Simply copy the prompt, attach your photo in Gemini, and paste it directly.'],
+  ['How do I write a couple prompt for Gemini AI?', 'A good couple prompt for Gemini AI describes the shared scene, ambient lighting, and mood while explicitly including a face-safety lock stating: "keep both faces, expressions, and clothing unchanged". This prevents Gemini from redrawing or swapping features.'],
+  ['What are effective family photo prompts for group edits?', 'Effective family photo prompts focus on harmonizing the background, color palette, or lighting while strictly locking each person\'s likeness, age, and smile. Prompts that specify "keep every family member\'s identity and facial features unchanged" produce the cleanest group edits.'],
+  ['Where can I find a new trending prompt for photo editing?', 'Browse our Trending Instagram category on promptbeen. We regularly add each new trending prompt—from 90s disposable film and 3D miniature dioramas to golden hour portraits—complete with face-safe instructions ready to copy and paste.'],
+  ['What makes romantic couple AI prompts look cinematic and natural?', 'The best romantic couple AI prompts specify realistic camera lenses (35mm or 50mm), natural rim lighting or rainy reflections, and subtle film grain rather than digital smoothing. Keeping natural poses and genuine chemistry makes the couple photo prompt look authentic.'],
+  ['What is a couple romantic prompt for Gemini AI?', 'A couple romantic prompt for Gemini AI is a descriptive instruction for an intimate couple scene—such as a beach sunset, neon city street, or cozy cafe—that tells Google Gemini exactly how to style the scene while preserving both individuals\' real faces.'],
+  ['Is promptbeen affiliated with OpenAI or Google?', 'No. promptbeen is an independent site. ChatGPT is a trademark of OpenAI, and Gemini is a trademark of Google LLC. We are not affiliated with, endorsed by or sponsored by either company.'],
 ];
 
 export const faqSchema = (items = FAQ) => ({
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: items.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+  mainEntity: (items || [])
+    .filter((item) => Array.isArray(item) && item.length >= 2 && item[0] && item[1])
+    .map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
 });

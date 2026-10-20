@@ -1,13 +1,14 @@
 ---
 import { getImgSafe } from '../data/images.js';
-const { p, eager = false } = Astro.props;
-const first = p.cats.split(' ')[0];
+const { p = {}, eager = false } = Astro.props;
+const first = (p.cats || 'trending').split(' ')[0] || 'trending';
 const tag = first[0].toUpperCase() + first.slice(1);
-const alt = `${p.title}: sample result of ChatGPT AI photo editing prompts`;
+const alt = `${p.title || 'Prompt'}: sample result of AI photo editing prompts`;
 const ph = p.image ? null : getImgSafe(p.slug);
+const imgSrc = p.image ? null : (typeof ph === 'string' ? ph : ph?.src);
 const load = eager ? { loading: 'eager', decoding: 'sync', fetchpriority: 'high' } : { loading: 'lazy', decoding: 'async' };
 ---
-<article class="print" data-c={p.cats}>
+<article class="print" data-c={p.cats || 'trending'}>
   {p.image ? (
     <img
       src={`/uploads/${p.image}-400.webp`}
@@ -15,8 +16,8 @@ const load = eager ? { loading: 'eager', decoding: 'sync', fetchpriority: 'high'
       sizes="(max-width: 600px) 90vw, 270px"
       width="400" height="500" alt={alt} {...load}
     />
-  ) : ph ? (
-    <img src={ph.src} width="400" height="500" alt={alt} {...load} />
+  ) : imgSrc ? (
+    <img src={imgSrc} width="400" height="500" alt={alt} {...load} />
   ) : (
     <div class="phimg" role="img" aria-label={alt}></div>
   )}

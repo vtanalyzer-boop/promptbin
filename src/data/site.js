@@ -7,7 +7,7 @@ export const SITE = {
   manager: { name: 'Kamlesh Mohabe', role: 'Digital Preprioter | Software Engineer', label: 'Platform Manager' },
   updated: '2026-10-12',
   formAction: 'https://formspree.io/f/YOUR_FORM_ID',
-  tagline: 'Free, copy-ready ChatGPT AI photo editing prompts for portraits, couples, text overlays and Instagram trends.',
+  tagline: 'Free, copy-ready ChatGPT & Gemini AI photo editing prompts for portraits, romantic couples, family photos and new trending styles.',
   nav: [
     ['/', 'Prompts'],
     ['/ai-photo-prompt-tool/', 'Prompt Tool'],
