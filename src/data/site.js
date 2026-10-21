@@ -1,8 +1,8 @@
 export const SITE = {
   name: 'promptbeen',
   email: 'promptbin@gmail.com',
-  domain: 'promptbin.in',
-  url: 'https://promptbin.in',
+  domain: 'promptseen.site',
+  url: 'https://promptseen.site',
   // Platform manager. Shown on About, in the footer and in structured data.
   manager: { name: 'Kamlesh Mohabe', role: 'Digital Preprioter | Software Engineer', label: 'Platform Manager' },
   updated: '2026-10-12',

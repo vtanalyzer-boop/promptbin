@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import cloudflare from '@astrojs/cloudflare';
 
 // Production domain. Override with the SITE env var at build time if needed (e.g. a preview URL).
-const SITE = process.env.SITE || 'https://promptbin.in';
+const SITE = process.env.SITE || 'https://promptseen.site';
 
 export default defineConfig({
   site: SITE,
