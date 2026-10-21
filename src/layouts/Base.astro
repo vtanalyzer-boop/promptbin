@@ -18,6 +18,15 @@ const ALL_LANGS = ['en', 'hi', 'mr', 'bn', 'ta', 'es', 'fr', 'de', 'pt', 'ru', '
 <!doctype html>
 <html lang={lang} data-lang={lang} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-EMH4B0YZMX"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-EMH4B0YZMX');
+    </script>
     <meta charset="utf-8" />
     <meta name="color-scheme" content="light dark" />
     <script is:inline>
